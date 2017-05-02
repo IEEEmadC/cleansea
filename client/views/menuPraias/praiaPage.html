@@ -1,0 +1,10 @@
+<template name="praiaPage">
+	<hr style="margin-bottom: 21%;">
+{{#with model}}
+	<div class="praia-info-container" style="{{setColor this}}">
+		<h1 class="info-title"> {{praia}}</h1>
+		<p>Qualidade: {{qualidade}}</p>
+		<p>{{local}}</p>
+	</div>
+{{/with}}
+</template>

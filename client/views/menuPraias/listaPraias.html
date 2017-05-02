@@ -1,0 +1,55 @@
+<template name="listaPraias">
+	<section class="section-lista-praias">
+		<hr style="margin-bottom: 18px;">
+		<button class="town uptown-show">
+			<figure class="city-holder">
+				<img src="/farolBarra3.jpg">
+				<div class="style-city-right">
+					<div class="text-town text-uptown">
+						<h1>Cidade Alta</h1>
+						<hr>
+						<h4>Uptown</h4>
+					</div>
+				</div>
+				<div id="triangle-right"></div>
+			</figure>
+		</button>
+		<button class="town downtown-show">
+			<figure class="city-holder">
+				<img src="/pelourinho2.jpg">
+				<div class="style-city-left">
+					<div class="text-town text-downtown">
+						<h1>Cidade Baixa</h1>
+						<hr>
+						<h4>Downtown</h4>
+					</div>
+
+				</div>
+				<div id="triangle-left"></div>
+			</figure>
+		</button>
+		<section class="uptown">
+			{{#each populatePraias}}
+				{{> sectionPraia}}
+			{{/each}}
+		</section>
+	</section>
+	<div style="margin: 85px;"></div>
+</template>
+
+<template name="sectionPraia">
+		<div class="component-praia" style="{{setColor this}}">
+		<a href="{{pathFor 'praiaPage' data=idCaller}}">
+			<div class="component-praia-inner-wrapper">
+				<div class="praia-inside-comp praia-in-icon">
+					<i class="icon-praia fa fa-{{returnIcon qualidade}}" aria-hidden="true"></i>
+				</div>
+				<div class="praia-inside-comp praia-in-name">
+					<p>{{praia}}</p>
+					<span class="codigo-absolute">- {{codigo}}</span>
+				</div>
+				<button class="praia-inside-comp praia-in-btn"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+				</div>
+		</a>
+		</div>
+</template>

@@ -1,0 +1,29 @@
+<template name="mainScreen">
+	<section class="container container-main">
+	<hr style="margin-bottom: 16%;">
+		<div class="numero-praias">
+			<div class="emitido-title">
+				<h3>{{getEmitido}}</h3>
+			</div>
+			<div class="info-left-praia">
+				<h4>Total de praias Próprias para Banho</h4>
+			</div>
+			<div class="info-right-praia">
+				<p style="color: #1d463c;">{{totalPraiasLimpas}}</p>
+			</div>
+			<div class="info-left-praia">
+				<h4>Total de praias Impróprias para Banho</h4>
+			</div>
+			<div class="info-right-praia">
+				<p style="color: #94000F;">{{totalPraiasSujas}}</p>
+			</div>
+			<h5>Total de praias analisadas em Salvador: {{totalPraias}}</h5>
+		</div>
+		<div class="texto-praias">
+			<p>As praias marcadas como Impróprias são aquelas em que foram encontradas um alto nível de  <em>Escherichia Coli</em>, bactéria encontrada nas fezes humanas e/ou de animais.</p>
+		</div>
+		<div class="texto-praias">
+			<p>Todas as informações são retiradas do site do <a href="http://www.inema.ba.gov.br/" target="_blank">Inema</a> (Instituto do Meio Ambiente e Recursos Hídricos</p>
+		</div>
+	</section>
+</template>
