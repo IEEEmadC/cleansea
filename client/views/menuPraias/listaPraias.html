@@ -1,38 +1,43 @@
 <template name="listaPraias">
 	<section class="section-lista-praias">
 		<hr style="margin-bottom: 18px;">
-		<button class="town uptown-show">
-			<figure class="city-holder">
-				<img src="/farolBarra3.jpg">
-				<div class="style-city-right">
-					<div class="text-town text-uptown">
-						<h1>Cidade Alta</h1>
-						<hr>
-						<h4>Uptown</h4>
-					</div>
-				</div>
-				<div id="triangle-right"></div>
-			</figure>
-		</button>
-		<button class="town downtown-show">
-			<figure class="city-holder">
-				<img src="/pelourinho2.jpg">
-				<div class="style-city-left">
-					<div class="text-town text-downtown">
-						<h1>Cidade Baixa</h1>
-						<hr>
-						<h4>Downtown</h4>
-					</div>
 
-				</div>
-				<div id="triangle-left"></div>
-			</figure>
-		</button>
-		<section class="uptown">
+		<div class="button-cities-holder">
+			<button class="town uptown-show">
+				<figure class="city-holder">
+					<img src="/farolBarra3.jpg">
+					<div class="style-city-right">
+						<div class="text-town text-uptown">
+							<h1>Cidade Alta</h1>
+							<hr>
+							<h4>Uptown</h4>
+						</div>
+					</div>
+					<div id="triangle-right"></div>
+				</figure>
+			</button>
+
+			<button class="town downtown-show">
+				<figure class="city-holder">
+					<img src="/pelourinho2.jpg">
+					<div class="style-city-left">
+						<div class="text-town text-downtown">
+							<h1>Cidade Baixa</h1>
+							<hr>
+							<h4>Downtown</h4>
+						</div>
+
+					</div>
+					<div id="triangle-left"></div>
+				</figure>
+			</button>
+		</div>
+
+		<div class="uptown">
 			{{#each populatePraias}}
 				{{> sectionPraia}}
 			{{/each}}
-		</section>
+		</div>
 	</section>
 	<div style="margin: 85px;"></div>
 </template>

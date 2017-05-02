@@ -46,7 +46,9 @@ Template.listaPraias.events({
 		e.preventDefault();
 		Router.current().search(t);
 	},
-	'click .uptown-show':function(){
+	'click .uptown-show':function(e){
+		e.preventDefault();
+		
 		if ($('.uptown').css('height') !== '0px') {
 			console.log("height 100%")
 			$('.uptown').css('height', '0');
@@ -55,6 +57,7 @@ Template.listaPraias.events({
 			console.log("height 0")
 			$('.uptown').css('height', '100%');
 		}
+		$('.button-cities-holder').toggle();
 	},
 	'click .downtown-show':function(){
 		if ($('.downtown').css('height') !== '0px') {

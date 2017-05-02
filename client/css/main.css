@@ -3,7 +3,7 @@ html, body {
    width: 100%;
    margin: 0;
    padding: 0;
-   background: url(img/bg-sea3.jpg) no-repeat fixed center;
+   background: rgba(90,200,250, 0.25);
 }
 h1{
    font-family: 'Roboto', Helvetica, sans-serif;
@@ -17,11 +17,11 @@ a:hover{
 /*--------------------------------------START HEADER-------------------------------------*/
 .header-main-nav{
 	width: 100%;
-	height: 55px;
-	background-color: #1da2d8;
-	position: fixed;
-	top: 0;
-	z-index: 100;
+    height: 52px;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    z-index: 100;
 	-webkit-box-shadow: 0px 0px 28px -8px rgba(0,105,148,1);
 	-moz-box-shadow: 0px 0px 28px -8px rgba(0,105,148,1);
 	box-shadow: 0px 0px 28px -8px rgba(0,105,148,1);
@@ -36,12 +36,11 @@ a:hover{
     display: inline-block;
 }
 .title-main-app{
-	color:#fff;
-	text-align: center;
-	font-size: 2rem;
-	padding-top: 12px;
-	/*display: inline-block;
-	width: 65%;*/
+	color: #000;
+    text-align: center;
+    font-size: 2rem;
+    padding-top: 10px;
+    font-weight: bold;
 }
 /*--------------------------------------END HEADER-------------------------------------*/
 /*--------------------------------------START FOOTER-------------------------------------*/
@@ -49,8 +48,8 @@ a:hover{
 	position: fixed;
 	bottom: 0;
 	width: 100%;
-	height: 55px;
-	background-color: #1da2d8;
+	height: 52px;
+	background-color: #fff;
 	-webkit-box-shadow: 0px 0px 28px -8px rgba(0,105,148,1);
 	-moz-box-shadow: 0px 0px 28px -8px rgba(0,105,148,1);
 	box-shadow: 0px 0px 28px -8px rgba(0,105,148,1);	
@@ -58,8 +57,8 @@ a:hover{
 .btn-main-footer{
 	background-color: transparent;
 	border: none;
-	color: #17143E;
-	font-size: 3.8rem;
+	color: #ccc;
+	font-size: 3.4rem;
 	width: 33.333%;
 	float: left;
 	padding: 0.5% 0 0 0;
@@ -67,7 +66,7 @@ a:hover{
 }
 .active i{
 	width: 100%;
-    color: #fff;
+    color: #000;
     padding-bottom: 4px;
 }
 /*--------------------------------------END FOOTER-------------------------------------*/
@@ -127,7 +126,7 @@ a:hover{
 .style-city-right{
 	width: 132px;
     height: 100%;
-    background: rgba(0,0,0, 0.8);
+    background: rgba(0,0,0, 0.96);
     position: absolute;
     top: 0;
     border-top-right-radius: 3px;
@@ -135,7 +134,7 @@ a:hover{
 .style-city-left{
 	width: 136px;
     height: 100%;
-    background: rgba(0,0,0, 0.8);
+    background: rgba(0,0,0, 0.96);
     position: absolute;
     top: 0;
     right: 0;
@@ -145,7 +144,7 @@ a:hover{
 	width: 0;
     height: 0;
     border-top: 240px solid transparent;
-    border-left: 100px solid rgba(0,0,0, 0.8);
+    border-left: 100px solid rgba(0,0,0, 0.96);
     border-bottom: 0 solid transparent;
     position: absolute;
     top: 0px;
@@ -158,7 +157,7 @@ a:hover{
     right: 136px;
     top: 0;
     border-top: 240px solid transparent;
-    border-right: 100px solid rgba(0,0,0, 0.8);
+    border-right: 100px solid rgba(0,0,0, 0.96);
     border-bottom: 0 solid transparent;
 }
 .uptown, .downtown{
@@ -245,7 +244,7 @@ a:hover{
 	width: 100%;
 	height: 100%;
 	position: fixed;
-	bottom: 55px;
+	bottom: 50px;
 }
 /*.map-canvas{
 	height: 82% !important;
