@@ -1,6 +1,7 @@
 Template.listaPraias.helpers({
 	populatePraias: function(){
-		return Praias.find().fetch();
+		let zonaSet = Session.get("zona");
+		return Praias.find({zona:zonaSet}).fetch();
 	}
 });
 
@@ -8,8 +9,7 @@ Template.sectionPraia.helpers({
 	setColor: function(praia){
 		console.log("this", praia);
 		if (praia.qualidade === 'Própria') {
-			console.log("border")
-			return 'border-left: solid 10px #4AB096;';
+			return 'border-left: solid 10px #006994;';
 		}
 		else{
 			return 'border-left: solid 10px #94000F;';
@@ -38,35 +38,37 @@ Template.sectionPraia.helpers({
 	},
 });
 Template.listaPraias.onRendered(function () {
-	
-});
+	window.scroll(0,0);
+});	
 
 Template.listaPraias.events({
 	'keyup .search': function(e, t) {
 		e.preventDefault();
 		Router.current().search(t);
 	},
-	'click .uptown-show':function(e){
+	'click .town':function(e){
 		e.preventDefault();
-		
-		if ($('.uptown').css('height') !== '0px') {
+
+		if ($('.show-praias-all').css('height') !== '0px') {
 			console.log("height 100%")
-			$('.uptown').css('height', '0');
+			$('.show-praias-all').css('height', '0');
 		}
 		else{
 			console.log("height 0")
-			$('.uptown').css('height', '100%');
+			$('.show-praias-all').css('height', '100%');
 		}
 		$('.button-cities-holder').toggle();
 	},
-	'click .downtown-show':function(){
-		if ($('.downtown').css('height') !== '0px') {
-			console.log("height 100%")
-			$('.downtown').css('height', '0');
-		}
-		else{
-			console.log("height 0")
-			$('.downtown').css('height', '100%');
-		}
+	'click .zona1-show':function(){
+		Session.set("zona", "1");
+	},
+	'click .zona2-show':function(){
+		Session.set("zona", "2");
+	},
+	'click .zona3-show':function(){
+		Session.set("zona", "3");
+	},
+	'click .zona4-show':function(){
+		Session.set("zona", "4");
 	},
 });

@@ -49,6 +49,7 @@ a:hover{
 	bottom: 0;
 	width: 100%;
 	height: 52px;
+	z-index: 100;
 	background-color: #fff;
 	-webkit-box-shadow: 0px 0px 28px -8px rgba(0,105,148,1);
 	-moz-box-shadow: 0px 0px 28px -8px rgba(0,105,148,1);
@@ -84,28 +85,30 @@ a:hover{
 	font-size: 6rem;
 }
 .numero-praias{
-	width: 95%;
+	width: 100%;
 	margin: auto;
 	margin-bottom: 4%;
 	background-color: rgba(85, 212, 230, 0.7);
 	font-weight: bold;
-	border-radius: 15px;
+	/*border-radius: 15px;*/
 	padding: 5%;	
+	text-align: center;
 }
 .info-right-praia{
 	text-align: center;
 }
 .texto-praias{
-	width: 95%;
+	width: 100%;
 	margin: auto;
 	margin-bottom: 4%;
 	background-color: rgba(85, 212, 230, 0.7);
 	font-weight: bold;
-	border-radius: 15px;
+	/*border-radius: 15px;*/
 	padding: 5%;
 }
 .container-main{
 	margin-bottom:15%;
+	padding: 0;
 }
 /*--------------------------------------END Main Screen-------------------------------------*/
 /*--------------------------------------START Lista Praia-------------------------------------*/
@@ -116,17 +119,24 @@ a:hover{
 	margin-top:10px;
 	width: 100%;
 }
-.town img{
-	width: 100%;
-	height: 240px;
+.town.left img{
+	width: 65%;
+    height: 140px;
+    float: right;
+}
+.town.right img{
+	width: 65%;
+    height: 140px;
+    float: left;
 }
 .city-holder{
 	position: relative;
+	height: 140px;
 }
 .style-city-right{
 	width: 132px;
     height: 100%;
-    background: rgba(0,0,0, 0.96);
+    background: rgba(0,105,148, 1);
     position: absolute;
     top: 0;
     border-top-right-radius: 3px;
@@ -134,7 +144,7 @@ a:hover{
 .style-city-left{
 	width: 136px;
     height: 100%;
-    background: rgba(0,0,0, 0.96);
+    background: rgba(0,105,148, 1);
     position: absolute;
     top: 0;
     right: 0;
@@ -143,24 +153,24 @@ a:hover{
  #triangle-right { 
 	width: 0;
     height: 0;
-    border-top: 240px solid transparent;
-    border-left: 100px solid rgba(0,0,0, 0.96);
-    border-bottom: 0 solid transparent;
     position: absolute;
+    left: 130px;
     top: 0px;
-    left: 132px;
+    border-top: 140px solid transparent;
+    border-left: 100px solid rgba(0,105,148, 1);
+    border-bottom: 0 solid transparent;
 }
  #triangle-left {
  	width: 0;
     height: 0;
     position: absolute;
-    right: 136px;
+    right: 135px;
     top: 0;
-    border-top: 240px solid transparent;
-    border-right: 100px solid rgba(0,0,0, 0.96);
+    border-top: 140px solid transparent;
+    border-right: 100px solid rgba(0,105,148, 1);
     border-bottom: 0 solid transparent;
 }
-.uptown, .downtown{
+.show-praias-all{
 	height: 0;
 	overflow: hidden;
 	-webkit-transition: height 1s;
@@ -171,12 +181,12 @@ a:hover{
 }
 .text-town{
 	position: absolute;
-    top: 42px;
+    top: 0;
     z-index: 10;
     color: #fff;
 }
 .text-downtown{
-	right: 10px;
+	right: 24px;
 }
 .text-uptown{
 	left: 22px;
@@ -184,6 +194,7 @@ a:hover{
 .section-lista-praias{
 	padding-top: 4%;
 	padding-bottom: 54px;
+	/*height: 100vh;*/
 }
 .section-lista-praias p{
 	margin-bottom: 0;

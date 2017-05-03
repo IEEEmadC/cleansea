@@ -3,43 +3,73 @@
 		<hr style="margin-bottom: 18px;">
 
 		<div class="button-cities-holder">
-			<button class="town uptown-show">
-				<figure class="city-holder">
-					<img src="/farolBarra3.jpg">
-					<div class="style-city-right">
-						<div class="text-town text-uptown">
-							<h1>Cidade Alta</h1>
-							<hr>
-							<h4>Uptown</h4>
-						</div>
-					</div>
-					<div id="triangle-right"></div>
-				</figure>
-			</button>
 
-			<button class="town downtown-show">
+			<button class="town right zona1-show">
 				<figure class="city-holder">
-					<img src="/pelourinho2.jpg">
+					<img src="/suburbio.jpg">
 					<div class="style-city-left">
 						<div class="text-town text-downtown">
-							<h1>Cidade Baixa</h1>
+							<h3>ZONA 1</h3>
 							<hr>
-							<h4>Downtown</h4>
+							<h4>Subúrbio</h4>
 						</div>
 
 					</div>
 					<div id="triangle-left"></div>
 				</figure>
 			</button>
+
+			<button class="town left zona2-show">
+				<figure class="city-holder">
+					<img src="/pelourinho4.jpg">
+					<div class="style-city-right">
+						<div class="text-town text-uptown">
+							<h3>ZONA 2</h3>
+							<hr>
+							<h4>Cidade Baixa</h4>
+						</div>
+					</div>
+					<div id="triangle-right"></div>
+				</figure>
+			</button>
+
+			<button class="town right zona3-show">
+				<figure class="city-holder">
+					<img src="/farolBarra2.jpg">
+					<div class="style-city-left">
+						<div class="text-town text-downtown">
+							<h3>ZONA 3</h3>
+							<hr>
+							<h4>Barra/Pituba</h4>
+						</div>
+
+					</div>
+					<div id="triangle-left"></div>
+				</figure>
+			</button>
+
+			<button class="town left zona4-show">
+				<figure class="city-holder">
+					<img src="/farolitapua.jpg">
+					<div class="style-city-right">
+						<div class="text-town text-uptown">
+							<h3>ZONA 4</h3>
+							<hr>
+							<h4>Itapuã/Ipitanga</h4>
+						</div>
+					</div>
+					<div id="triangle-right"></div>
+				</figure>
+			</button>
+
 		</div>
 
-		<div class="uptown">
+		<div class="show-praias-all">
 			{{#each populatePraias}}
 				{{> sectionPraia}}
 			{{/each}}
 		</div>
 	</section>
-	<div style="margin: 85px;"></div>
 </template>
 
 <template name="sectionPraia">
