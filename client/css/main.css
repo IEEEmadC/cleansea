@@ -78,6 +78,11 @@ a:hover{
     color: #000;
     padding-bottom: 4px;
 }
+.btn-main-footer img{
+	height: 32px;
+	/*margin-bottom: 8px;*/
+	margin-top: -22px;
+}
 /*--------------------------------------END FOOTER-------------------------------------*/
 /*--------------------------------------START Main Screen-------------------------------------*/
 .emitido-title{
