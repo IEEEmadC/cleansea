@@ -14,7 +14,24 @@ Template.mapaTemplate.helpers({
     		scaleControl: false,
     		streetViewControl: false,
     		rotateControl: false,
-    		fullscreenControl: false
+    		fullscreenControl: false,
+        styles: [
+            {
+                "featureType": "water",
+                "elementType": "geometry",
+                "stylers": [
+                    {
+                        "color": "#048ba8"
+                    },
+                    {
+                        "lightness": "5"
+                    },
+                    {
+                        "gamma": "1.10"
+                    }
+                ]
+            },
+        ]
       };
     }
   }
@@ -35,10 +52,10 @@ Template.mapaTemplate.onCreated(function() {
         console.log("Quali", item.qualidade)
       if (item.qualidade === 'Própria') {
         console.log("Quali", item.qualidade)
-        iconImg = 'img/markerProp.png'; 
+        iconImg = 'img/markerNo.png'; 
       }
       else{
-        iconImg = 'img/markerImp.png'; 
+        iconImg = 'img/markerOk.png'; 
       }
      var marker = new google.maps.Marker({
           draggable: false,
