@@ -129,7 +129,8 @@ a:hover{
 	padding: 0;
 	background: transparent;
 	border:0;
-	margin-top:10px;
+	/*margin-top:10px;*/
+	margin-top: -12px;
 	width: 100%;
 }
 .town.left img{
@@ -184,13 +185,30 @@ a:hover{
     border-bottom: 0 solid transparent;
 }
 .show-praias-all{
+	display: none;
 	height: 0;
 	overflow: hidden;
+	margin: 50px 0 50px 0;
 	-webkit-transition: height 1s;
 	-moz-transition: height 1s;
 	-ms-transition: height 1s;
 	-o-transition: height 1s;
 	transition: height 1s;
+}
+.pseudo-back-btn{
+	position: fixed;
+	display: none;
+	top: 3px;
+	z-index: 100;
+	background: transparent;
+	border: 0;
+	font-size: 33px;
+	padding: 0 10px 0 10px;
+	color: #fff;
+}
+.show-praias-all .img-cover{
+	height: 178px;
+	width: 100%;
 }
 .text-town{
 	position: absolute;
@@ -206,7 +224,8 @@ a:hover{
 }
 .section-lista-praias{
 	padding-top: 4%;
-	padding-bottom: 54px;
+	padding-bottom: 46px;
+	/*padding-bottom: 54px;*/
 	/*height: 100vh;*/
 }
 .section-lista-praias p{

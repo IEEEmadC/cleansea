@@ -2,6 +2,21 @@ Template.listaPraias.helpers({
 	populatePraias: function(){
 		let zonaSet = Session.get("zona");
 		return Praias.find({zona:zonaSet}).fetch();
+	},
+	getPraiaImg: function(){
+		console.log("which praia?", Session.get("zona"))	
+		if (Session.get("zona") === "1") {
+			return 'suburbio';
+		}	
+		if (Session.get("zona") === "2") {
+			return 'pelourinho4';
+		}	
+		if (Session.get("zona") === "3") {
+			return 'farolBarra2';
+		}	
+		if (Session.get("zona") === "4") {
+			return 'farolitapua';
+		}
 	}
 });
 
@@ -48,16 +63,21 @@ Template.listaPraias.events({
 	},
 	'click .town':function(e){
 		e.preventDefault();
-
-		if ($('.show-praias-all').css('height') !== '0px') {
-			console.log("height 100%")
-			$('.show-praias-all').css('height', '0');
-		}
-		else{
-			console.log("height 0")
-			$('.show-praias-all').css('height', '100%');
-		}
-		$('.button-cities-holder').toggle();
+		console.log("height 0");
+		window.scroll(0,0);
+		$('.show-praias-all').css('height', '100%');
+		$('.pseudo-back-btn').css('display', 'block');
+		$('.show-praias-all').css('display', 'block');
+		$('.section-lista-praias').toggle();
+	},
+	'click .pseudo-back-btn':function(e){
+		e.preventDefault();
+		console.log("height 100%")
+		window.scroll(0,0);
+		$('.show-praias-all').css('height', '0');
+		$('.show-praias-all').css('display', 'none');
+		$('.pseudo-back-btn').css('display', 'none');
+		$('.section-lista-praias').toggle();
 	},
 	'click .zona1-show':function(){
 		Session.set("zona", "1");

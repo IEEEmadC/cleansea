@@ -1,6 +1,9 @@
 <template name="listaPraias">
+	<button class="pseudo-back-btn">
+		<i class="fa fa-chevron-left"></i>
+	</button>
 	<section class="section-lista-praias">
-		<hr style="margin-bottom: 18px;">
+		<hr style="margin-bottom: 20px;">
 
 		<div class="button-cities-holder">
 
@@ -63,12 +66,13 @@
 			</button>
 
 		</div>
+	</section>
 
-		<div class="show-praias-all">
-			{{#each populatePraias}}
-				{{> sectionPraia}}
-			{{/each}}
-		</div>
+	<section class="show-praias-all">
+		<img class="img-cover" src="/{{getPraiaImg}}.jpg">
+		{{#each populatePraias}}
+			{{> sectionPraia}}
+		{{/each}}
 	</section>
 </template>
 
