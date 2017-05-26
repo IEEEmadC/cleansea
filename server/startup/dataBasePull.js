@@ -14,7 +14,7 @@ Meteor.startup(function () {
     //     console.log(now.format("DD/MM/YYYY HH:mm"));
     // }));
 
-    let pullDB = schedule.scheduleJob('00 00 23 * * 1-7', Meteor.bindEnvironment(function () {
+    let pullDB = schedule.scheduleJob('00 15 22 * * 1-7', Meteor.bindEnvironment(function () {
         
         let now = moment(),
             jsonPull={};
