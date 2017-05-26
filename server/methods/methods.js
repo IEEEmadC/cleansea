@@ -1,25 +1,30 @@
-import schedule from 'node-schedule';
+import PDFParser from 'pdf2json';
+import fs from 'fs';
 
-moment.locale('pt-br');
-moment.tz.setDefault('America/Bahia');
+Meteor.methods({
+	// callGet:function(){
+	// 	let pdfParser = new PDFParser(this,1),
+	// 		stream 	  = fs.createWriteStream("file.txt"),
+	// 		url 	  = 'http://www.inema.ba.gov.br/wp-content/uploads/2011/08/Boletim-N20-Balneabilidade-para-Salvador-emitido-em-19-05-2017.pdf';
 
-Meteor.startup(function () {
-    console.log("Teste de startup");
-    
-    // let testeJob = schedule.scheduleJob('42 * * * * *', Meteor.bindEnvironment(function () {
-        
-    //     var now = moment();
-
-    //     console.log("the answer to life, the universe, and everything!");
-    //     console.log(now.format("DD/MM/YYYY HH:mm"));
-    // }));
-
-    let pullDB = schedule.scheduleJob('00 00 23 * * 1-7', Meteor.bindEnvironment(function () {
-        
-        let now = moment(),
-            jsonPull={};
-
-        HTTP.call( 'GET', 'https://praiaget.herokuapp.com/rest/praiasget', function( error, response ) {
+	// 	HTTP.call( 'GET', url, function(error, response) {
+	// 		if (error) {
+	// 			console.log('error,', error);
+	// 		}
+	// 		if (response) {
+	// 			console.log("****RESPONSE type:", typeof(response.content));
+	// 			fs.writeFileSync("10111.pdf", response,'binary');
+	// 			// // console.log("response", response.content);
+	// 			//     pdfParser.on("pdfParser_dataError", function(errData){console.error('**error:',errData.parserError) });
+ //    // 				pdfParser.on("pdfParser_dataReady", function(pdfData) {
+	// 			//         console.log("pdfData", JSON.stringify(pdfData));
+	// 			//     });
+	// 			//     pdfParser.loadPDF(response.content);
+	// 		}
+	// 	});
+	// },
+	callGet:function(){
+		HTTP.call( 'GET', 'https://praiaget.herokuapp.com/rest/praiasget', function( error, response ) {
             if (error) {
                 console.log("Error:", error);
             }
@@ -72,7 +77,5 @@ Meteor.startup(function () {
                 }
             }
         });
-        console.log("FInd", Praias.find().fetch());
-        
-    }));
+	},
 });

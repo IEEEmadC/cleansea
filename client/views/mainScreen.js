@@ -38,3 +38,10 @@ Template.mainScreen.helpers({
 		return Session.get("praiasSujas");
 	},
 });
+
+Template.mainScreen.events({
+	'click .callTeste': function(){
+		console.log("Call teste!");
+		Meteor.call('callGet');
+	},
+});

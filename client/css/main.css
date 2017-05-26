@@ -134,12 +134,12 @@ a:hover{
 	width: 100%;
 }
 .town.left img{
-	width: 65%;
+	width: 80%;
     height: 140px;
     float: right;
 }
 .town.right img{
-	width: 65%;
+	width: 80%;
     height: 140px;
     float: left;
 }
@@ -150,7 +150,8 @@ a:hover{
 .style-city-right{
 	width: 132px;
     height: 100%;
-    background: #048BA8;
+    background: #B2DFDB;
+    /*background: #048BA8;*/
     /*background: rgba(0,105,148, 1);*/
     position: absolute;
     top: 0;
@@ -159,7 +160,8 @@ a:hover{
 .style-city-left{
 	width: 136px;
     height: 100%;
-    background: #048BA8;
+    background: #B2DFDB;
+    /*background: #048BA8;*/
     /*background: rgba(0,105,148, 1);*/
     position: absolute;
     top: 0;
@@ -173,7 +175,8 @@ a:hover{
     left: 130px;
     top: 0px;
     border-top: 140px solid transparent;
-    border-left: 100px solid #048BA8;
+    border-left: 100px solid #B2DFDB;
+    /*border-left: 100px solid #048BA8;*/
     /*border-left: 100px solid rgba(0,105,148, 1);*/
     border-bottom: 0 solid transparent;
 }
@@ -184,7 +187,8 @@ a:hover{
     right: 135px;
     top: 0;
     border-top: 140px solid transparent;
-    border-right: 100px solid #048BA8;
+    border-right: 100px solid #B2DFDB;
+    /*border-right: 100px solid #048BA8;*/
     /*border-right: 100px solid rgba(0,105,148, 1);*/
     border-bottom: 0 solid transparent;
 }
@@ -218,7 +222,10 @@ a:hover{
 	position: absolute;
     top: 0;
     z-index: 10;
-    color: #fff;
+    color: #212121;
+}
+.text-town hr{
+	border-color: #212121;
 }
 .text-downtown{
 	right: 24px;
