@@ -6,7 +6,8 @@ Template.mapaTemplate.helpers({
   mapOptions: function() {
     if (GoogleMaps.loaded()) {
       return {
-        center: new google.maps.LatLng(-12.974424, -38.465321),
+        center: new google.maps.LatLng(-12.894012, -38.429101),
+        // center: new google.maps.LatLng(-12.974424, -38.465321),
         zoom: 11,
         mapTypeControl: false,
         gestureHandling: 'greedy',
@@ -52,10 +53,10 @@ Template.mapaTemplate.onCreated(function() {
         console.log("Quali", item.qualidade)
       if (item.qualidade === 'Própria') {
         console.log("Quali", item.qualidade)
-        iconImg = 'img/markerNo.png'; 
+        iconImg = 'img/markerOk.png'; 
       }
       else{
-        iconImg = 'img/markerOk.png'; 
+        iconImg = 'img/markerNo.png'; 
       }
      var marker = new google.maps.Marker({
           draggable: false,

@@ -65,7 +65,7 @@ Template.listaPraias.events({
 		e.preventDefault();
 		console.log("height 0");
 		window.scroll(0,0);
-		$('.show-praias-all').css('height', '100%');
+		$('.show-praias-all').css('height', 'auto');
 		$('.pseudo-back-btn').css('display', 'block');
 		$('.show-praias-all').css('display', 'block');
 		$('.section-lista-praias').toggle();

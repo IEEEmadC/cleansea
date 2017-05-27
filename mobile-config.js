@@ -1,28 +1,35 @@
-// App.info({
-//   id: 'com.example.matt.uber',
-//   name: 'über',
-//   description: 'Get über power in one button click',
-//   author: 'Matt Development Group',
-//   email: 'contact@example.com',
-//   website: 'http://example.com'
-// });
-// // Set up resources such as icons and launch screens.
-// App.icons({
-//   'iphone': 'icons/icon-60.png',
-//   'iphone_2x': 'icons/icon-60@2x.png',
-//   // More screen sizes and platforms...
-// });
+App.info({
+  id: 'com.solis.CleanSea',
+  name: 'CleanSea',
+  description: 'Veja quais praias estão livres de bactérias! Which Beaches are germ-free',
+  author: 'Rafael Solis Melo',
+  email: 'rsmelo_@hotmail.com',
+});
+// Set up resources such as icons and launch screens.
+App.icons({
+  'android_mdpi'    : 'mobile_configs/waveIcon.png',
+  'android_hdpi'    : 'mobile_configs/waveIcon.png',
+  'android_xhdpi'   : 'mobile_configs/waveIcon.png',
+  'android_xxhdpi'  : 'mobile_configs/waveIcon.png',
+  'android_xxxhdpi' : 'mobile_configs/waveIcon.png',
+
+  'ios_spotlight_2x': 'mobile_configs/waveIcon.png',
+  'ios_settings_3x' : 'mobile_configs/waveIcon.png',
+  'iphone_2x'       : 'mobile_configs/waveIcon.png',
+  'ipad_2x'         : 'mobile_configs/waveIcon.png',
+  'iphone_3x'       : 'mobile_configs/waveIcon.png'
+  // ... more screen sizes and platforms ...
+});
 // App.launchScreens({
 //   'iphone': 'splash/Default~iphone.png',
 //   'iphone_2x': 'splash/Default@2x~iphone.png',
 //   // More screen sizes and platforms...
 // });
-// // Set PhoneGap/Cordova preferences.
-// App.setPreference('BackgroundColor', '0xff0000ff');
-// App.setPreference('HideKeyboardFormAccessoryBar', true);
-// App.setPreference('Orientation', 'default');
-// App.setPreference('Orientation', 'all', 'ios');
-// // Pass preferences for a particular PhoneGap/Cordova plugin.
+// Set PhoneGap/Cordova preferences.
+App.setPreference('BackgroundColor', '0xff0000ff');
+App.setPreference('HideKeyboardFormAccessoryBar', true);
+App.setPreference('Orientation', 'portrait');
+// Pass preferences for a particular PhoneGap/Cordova plugin.
 // App.configurePlugin('com.phonegap.plugins.facebookconnect', {
 //   APP_ID: '1234567890',
 //   API_KEY: 'supersecretapikey'
