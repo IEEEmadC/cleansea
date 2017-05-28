@@ -22,7 +22,7 @@ Template.mapaTemplate.helpers({
                 "elementType": "geometry",
                 "stylers": [
                     {
-                        "color": "#048ba8"
+                        "color": "#A3CCFF"
                     },
                     {
                         "lightness": "5"
@@ -40,29 +40,30 @@ Template.mapaTemplate.helpers({
 Template.mapaTemplate.onCreated(function() {  
   GoogleMaps.ready('map', function(map) {
      console.log("I'm ready!");
-     let praias = Praias.find().fetch();
+      let praias = Praias.find().fetch(),
+          iconImg,
+          infowindow = new google.maps.InfoWindow({
+              content: "Empty"
+          });
 
-     // var marker = new google.maps.Marker({
-     //    position: map.options.center,
-     //    map: map.instance,
-     //  });
-
-
-     let iconImg
      praias.forEach(function(item){
-        console.log("Quali", item.qualidade)
-      if (item.qualidade === 'Própria') {
-        console.log("Quali", item.qualidade)
-        iconImg = 'img/markerOk.png'; 
-      }
-      else{
-        iconImg = 'img/markerNo.png'; 
-      }
-     var marker = new google.maps.Marker({
-          draggable: false,
-          position: new google.maps.LatLng(item.latitude, item.longitude),
-          map: map.instance,
-          icon: iconImg,
+        console.log("Quali", item)
+        if (item.qualidade === 'Própria') {
+            iconImg = 'img/markerOk.png'; 
+        }
+        else{
+            iconImg = 'img/markerNo.png'; 
+        }
+        let marker = new google.maps.Marker({
+                draggable: false,
+                position: new google.maps.LatLng(item.latitude, item.longitude),
+                map: map.instance,
+                icon: iconImg,
+            });
+
+        marker.addListener('click', function() {
+            infowindow.open(map, marker);
+            infowindow.setContent('<h4>Nome: '+ item.praia + '<br> Qualidade: ' + item.qualidade + '</h4>');
         });
 
      });
