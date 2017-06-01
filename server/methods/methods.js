@@ -3,7 +3,7 @@ import fs from 'fs';
 
 Meteor.methods({
 	callGet:function(){
-		
+		console.log("Emitido.findOne()",Emitido.findOne())
 		Future = Npm.require('fibers/future');
 
 		let pdfParser 		  = new PDFParser(this,1),
@@ -14,36 +14,26 @@ Meteor.methods({
 			pdfBuffer, temp, temp2, temp3, temp4, data
 			myFuture 		  = new Future();
 
-		HTTP.call( 'GET', url,{ encoding: 'binary', responseType: 'buffer' }, function(error, response) {
-			if (error) {
-				console.log('error,', error);
-			}
-			if (response) {
-                console.log("****RESPONSE", response);
+		pdfBuffer = HTTP.call( 'GET', url,{ encoding: 'binary', responseType: 'buffer' });
 
-                pdfBuffer = response.content;
-                
-				fs.writeFileSync("file.pdf", pdfBuffer, 'binary');
+		
+		console.log("****RESPONSE", pdfBuffer.content);
+		console.log("Emitido.findOne()",Emitido.findOne())
 
-			    pdfParser.on("pdfParser_dataError", function(errData){console.error('**error:',errData.parserError) });
-				pdfParser.on("pdfParser_dataReady", function(pdfData) {
+		pdfBuffer = pdfBuffer.content;
 
-					fs.writeFileSync("./QualidadePraias.txt", pdfParser.getRawTextContent());
-					console.log("writeFile call arrayMaker");
-						
-					arrayMaker();
+		fs.writeFileSync("file.pdf", pdfBuffer, 'binary');
 
-			    });
-			    pdfParser.loadPDF("file.pdf");
-			}
-		});
+		pdfParser.on("pdfParser_dataError", Meteor.bindEnvironment(function(errData){console.error('**error:',errData.parserError) }) );
+		
+		pdfParser.on("pdfParser_dataReady", Meteor.bindEnvironment(function(pdfData) {
+			console.log("** erro acontece aqui! pdf pdfParser_dataReady")
+			console.log("** tester Emitido.findOne()",Emitido.findOne())
 
-		function arrayMaker (){
-			console.log("arrayMaker");
-			let array = [];
-			fs.stat("./file.pdf", function(err, stats) {
-				if (stats) {
-					let array = fs.readFileSync('QualidadePraias.txt').toString().split("\n");
+			fs.writeFileSync("./QualidadePraias.txt", pdfParser.getRawTextContent());
+			console.log("writeFile call arrayMaker");
+				
+			let array = fs.readFileSync('QualidadePraias.txt').toString().split("\n");
 						data  = array[3].substring(array[3].indexOf("Emitido")).replace('\r','');
 
 					console.log("data: ", data);
@@ -72,31 +62,13 @@ Meteor.methods({
 							arrayPraias.push({Praia: temp, Qualidade: temp2, Local: temp3, Codigo: temp4});
 						}
 					}
-					jsonA = {"array":arrayPraias};
+					jsonPull = {"array":arrayPraias};
 
 					arrayPraias = [];
 
 					// console.log("done!", jsonA);
-					myFuture.return(jsonA)
-
-				  
-				}
-				else {
-					console.log("no")
-				}
-			});  
-			
-			if (myFuture.wait()) {
-			console.log("call bdPopulate");
-				bdPopulate(jsonA);
-
-			}
-		}
-
-	bdPopulate = function(jsonPull){
-		console.log("bdPopulate");
-			 //pega o array da restAPI e gera um json
-            
+					console.log("call bdPopulate");
+					
             for (var i = 1; i < jsonPull.array.length; i++) {
                 console.log("Index: ", i);
                 console.log("Praia: ", jsonPull.array[i].Praia);
@@ -141,6 +113,30 @@ Meteor.methods({
                                   });
                 }
             }
+
+		}) );
+
+		pdfParser.loadPDF("file.pdf");
+
+
+		function arrayMaker (){
+			console.log("arrayMaker");
+			// let array = [];
+			// fs.stat("./file.pdf", function(err, stats) {
+				// if (stats) {
+					
+				  
+				// }
+				// else {
+				// 	console.log("no")
+				// }
+			// });  
+		}
+
+	bdPopulate = function(jsonPull){
+		console.log("bdPopulate");
+			 //pega o array da restAPI e gera um json
+            
 	}
 	},
 	// callGet:function(){
