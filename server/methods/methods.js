@@ -11,10 +11,9 @@ Meteor.methods({
 			arrayInfoPraias   = [],
 			jsonA             = {},
 			url 	 		  = 'http://www.inema.ba.gov.br/wp-content/uploads/2011/08/Boletim-N20-Balneabilidade-para-Salvador-emitido-em-19-05-2017.pdf',
-			pdfBuffer, temp, temp2, temp3, temp4, data
-			myFuture 		  = new Future();
+			pdfBuffer, temp, temp2, temp3, temp4, data;
 
-		pdfBuffer = HTTP.call( 'GET', url,{ encoding: 'binary', responseType: 'buffer' });
+		pdfBuffer = HTTP.call( 'GET', url, { encoding: 'binary', responseType: 'buffer' });
 
 		
 		console.log("****RESPONSE", pdfBuffer.content);
@@ -27,48 +26,50 @@ Meteor.methods({
 		pdfParser.on("pdfParser_dataError", Meteor.bindEnvironment(function(errData){console.error('**error:',errData.parserError) }) );
 		
 		pdfParser.on("pdfParser_dataReady", Meteor.bindEnvironment(function(pdfData) {
-			console.log("** erro acontece aqui! pdf pdfParser_dataReady")
-			console.log("** tester Emitido.findOne()",Emitido.findOne())
+			// console.log("** erro acontece aqui! pdf pdfParser_dataReady")
 
 			fs.writeFileSync("./QualidadePraias.txt", pdfParser.getRawTextContent());
-			console.log("writeFile call arrayMaker");
+			
+			console.log("writeFile arrayMaker");
 				
+			// ArrayMaker
 			let array = fs.readFileSync('QualidadePraias.txt').toString().split("\n");
-						data  = array[3].substring(array[3].indexOf("Emitido")).replace('\r','');
+			data  = array[3].substring(array[3].indexOf("Emitido")).replace('\r','');
 
-					console.log("data: ", data);
+			console.log("data: ", data);
 
-					arrayPraias.push(data);
-					console.log("start loop");
-					for (let i = 5; i <= 43; i++) {
-						console.log("Loop")
-						if (i===34) {
-							console.log("34")
-						}
-						else{
-							console.log("operation")
-							temp = array[i].substring(0,array[i].indexOf("-")-1);
+			arrayPraias.push(data);
+			// console.log("start loop");
+			for (let i = 5; i <= 43; i++) {
+				// console.log("Loop")
+				if (i===34) {
+					// console.log("34 Escape")
+				}
+				else{
+					// console.log("operation")
+					temp = array[i].substring(0,array[i].indexOf("-")-1);
 
-							if (array[i].indexOf("Imprópria")>0) {
-								temp2 = array[i].substring(array[i].indexOf("Imprópria")).replace(/(\r\n|\n|\r)/gm,"");
-								temp3 = array[i].substring(array[i].indexOf("00")+2, array[i].indexOf("Imprópria"));
-								temp4 = array[i].substring(array[i].indexOf("-")+2, array[i].indexOf("00")+2);
-							}
-							if (array[i].indexOf("Própria")>0) {
-								temp2 = array[i].substring(array[i].indexOf("Própria")).replace(/(\r\n|\n|\r)/gm,"");
-								temp3 = array[i].substring(array[i].indexOf("00")+2, array[i].indexOf("Própria"));
-								temp4 = array[i].substring(array[i].indexOf("-")+2, array[i].indexOf("00")+2);
-							}
-							arrayPraias.push({Praia: temp, Qualidade: temp2, Local: temp3, Codigo: temp4});
-						}
+					if (array[i].indexOf("Imprópria")>0) {
+						temp2 = array[i].substring(array[i].indexOf("Imprópria")).replace(/(\r\n|\n|\r)/gm,"");
+						temp3 = array[i].substring(array[i].indexOf("00")+2, array[i].indexOf("Imprópria"));
+						temp4 = array[i].substring(array[i].indexOf("-")+2, array[i].indexOf("00")+2);
 					}
-					jsonPull = {"array":arrayPraias};
+					if (array[i].indexOf("Própria")>0) {
+						temp2 = array[i].substring(array[i].indexOf("Própria")).replace(/(\r\n|\n|\r)/gm,"");
+						temp3 = array[i].substring(array[i].indexOf("00")+2, array[i].indexOf("Própria"));
+						temp4 = array[i].substring(array[i].indexOf("-")+2, array[i].indexOf("00")+2);
+					}
+					arrayPraias.push({Praia: temp, Qualidade: temp2, Local: temp3, Codigo: temp4});
+				}
+			}
+			jsonPull = {"array":arrayPraias};
 
-					arrayPraias = [];
+			arrayPraias = [];
 
-					// console.log("done!", jsonA);
-					console.log("call bdPopulate");
+			// console.log("done!", jsonA);
+			console.log("call bdPopulate");
 					
+			// PopulateBD
             for (var i = 1; i < jsonPull.array.length; i++) {
                 console.log("Index: ", i);
                 console.log("Praia: ", jsonPull.array[i].Praia);
@@ -118,26 +119,6 @@ Meteor.methods({
 
 		pdfParser.loadPDF("file.pdf");
 
-
-		function arrayMaker (){
-			console.log("arrayMaker");
-			// let array = [];
-			// fs.stat("./file.pdf", function(err, stats) {
-				// if (stats) {
-					
-				  
-				// }
-				// else {
-				// 	console.log("no")
-				// }
-			// });  
-		}
-
-	bdPopulate = function(jsonPull){
-		console.log("bdPopulate");
-			 //pega o array da restAPI e gera um json
-            
-	}
 	},
 	// callGet:function(){
 	// 	HTTP.call( 'GET', 'https://praiaget.herokuapp.com/rest/praiasget', function( error, response ) {
