@@ -42,6 +42,14 @@ Template.mainScreen.helpers({
 Template.mainScreen.events({
 	'click .callTeste': function(){
 		console.log("Call teste!");
-		Meteor.call('callGet');
+		Meteor.call('callGet', function(error, result){
+			if (error) { console.log("error", error); }
+			else if (result) {
+				console.log("result", result);
+				Meteor.call('bdPopulate', result, function(error, result){
+					console.log("sucesso!", result)
+				});
+			}
+		});
 	},
 });

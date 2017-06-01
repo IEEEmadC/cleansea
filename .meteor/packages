@@ -27,6 +27,7 @@ session@1.1.7
 dburles:google-maps
 meteorhacks:npm
 http@1.2.12
+aldeed:http
 ostrio:files
 aldeed:collection2-core
 aldeed:simple-schema
