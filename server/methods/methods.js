@@ -10,7 +10,8 @@ Meteor.methods({
 			arrayPraias       = [],
 			arrayInfoPraias   = [],
 			jsonA             = {},
-			url 	 		  = 'http://www.inema.ba.gov.br/wp-content/uploads/2011/08/Boletim-N20-Balneabilidade-para-Salvador-emitido-em-19-05-2017.pdf',
+			// url 	 		  = 'http://www.inema.ba.gov.br/wp-content/uploads/2011/08/Boletim-N20-Balneabilidade-para-Salvador-emitido-em-19-05-2017.pdf',
+			url 	 		  = 'http://www.inema.ba.gov.br/wp-content/uploads/2011/08/Boletim-N21-Balneabilidade-para-Salvador-emitido-em-26-05-2017-1.pdf',
 			pdfBuffer, temp, temp2, temp3, temp4, data;
 
 		pdfBuffer = HTTP.call( 'GET', url, { encoding: 'binary', responseType: 'buffer' });
