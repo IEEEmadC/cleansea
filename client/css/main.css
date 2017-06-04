@@ -137,51 +137,50 @@ a:hover{
 	width: 100%;
 }
 .town.left img{
-	width: 80%;
-    height: 140px;
+	width: 100%;
+    height: 145px;
     float: right;
 }
 .town.right img{
-	width: 80%;
-    height: 140px;
+	width: 100%;
+    height: 145px;
     float: left;
 }
 .city-holder{
 	position: relative;
-	height: 140px;
+	height: 150px;
 }
 .style-city-right{
-	width: 132px;
-    height: 100%;
-    background: #B2DFDB;
-    /*background: #048BA8;*/
-    /*background: rgba(0,105,148, 1);*/
-    position: absolute;
-    top: 0;
-    border-top-right-radius: 3px;
+	width: 100%;
+	height: 100%;
+	/*background: #B2DFDB;*/
+	/*background: #048BA8;*/
+	background: rgba(0,0,0, .25);
+	position: absolute;
+	top: 0;
+	right: 0;
+	border-top-left-radius: 3px;
 }
 .style-city-left{
-	width: 136px;
-    height: 100%;
-    background: #B2DFDB;
-    /*background: #048BA8;*/
-    /*background: rgba(0,105,148, 1);*/
-    position: absolute;
-    top: 0;
-    right: 0;
-    border-top-left-radius: 3px;
+	width: 100%;
+	height: 100%;
+	/*background: #B2DFDB;*/
+	/*background: #048BA8;*/
+	background: rgba(0,0,0, .25);
+	position: absolute;
+	top: 0;
+	right: 0;
+	border-top-left-radius: 3px;
 }
  #triangle-right { 
-	width: 0;
-    height: 0;
-    position: absolute;
-    left: 130px;
-    top: 0px;
-    border-top: 140px solid transparent;
-    border-left: 100px solid #B2DFDB;
-    /*border-left: 100px solid #048BA8;*/
-    /*border-left: 100px solid rgba(0,105,148, 1);*/
-    border-bottom: 0 solid transparent;
+	width: 100%;
+	height: 100%;
+	/*background: #B2DFDB;*/
+	/*background: #048BA8;*/
+	background: rgba(0,0,0, .3);
+	position: absolute;
+	top: 0;
+	border-top-right-radius: 3px;
 }
  #triangle-left {
  	width: 0;
@@ -222,10 +221,12 @@ a:hover{
 	width: 100%;
 }
 .text-town{
-	position: absolute;
+	/*position: absolute;
     top: 0;
     z-index: 10;
-    color: #212121;
+    color: #212121;*/
+    color: #fff;
+	margin-top: 35px;
 }
 .text-town hr{
 	border-color: #212121;
