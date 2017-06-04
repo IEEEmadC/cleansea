@@ -3,11 +3,12 @@ html, body {
    width: 100%;
    margin: 0;
    padding: 0;
-   background: #fff;
+	background: #fff;
    /*background: rgba(90,200,250, 0.25);*/
+	font-family: 'Source Sans Pro', sans-serif;
 }
 h1{
-   font-family: 'Roboto', Helvetica, sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 button, a{
 	outline: none;
@@ -101,8 +102,10 @@ a:hover{
 	width: 100%;
 	margin: auto;
 	margin-bottom: 4%;
-	background-color: rgba(85, 212, 230, 0.7);
+	background-color: #01A1FF;
+	/*background-color: rgba(85, 212, 230, 0.7);*/
 	font-weight: bold;
+	color: #fff;
 	/*border-radius: 15px;*/
 	padding: 5%;	
 	text-align: center;
