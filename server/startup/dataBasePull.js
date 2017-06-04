@@ -26,7 +26,7 @@ Meteor.startup(function () {
     // │    └──────────────────── minute (0 - 59)
     // └───────────────────────── second (0 - 59, OPTIONAL)
 
-    let pullDB = schedule.scheduleJob('00 20 00 * * 1-7', Meteor.bindEnvironment(function () {
+    let pullDB = schedule.scheduleJob('00 00 12 * * *', Meteor.bindEnvironment(function () {
         console.log("Schedule!!");
         let pdfParser         = new PDFParser(this,1),
             arrayPraias       = [],
@@ -38,64 +38,44 @@ Meteor.startup(function () {
             idEmitido         = Emitido.findOne(),
             pdfBuffer, temp, temp2, temp3, temp4, data;
 
-        // function responseTest(){
-        //     console.log("function--------");
-        //     console.log("http://www.inema.ba.gov.br/wp-content/uploads/2011/08/Boletim-N"+changeNumber+"-Balneabilidade-para-Salvador-emitido-em-"+hoje+".pdf");
-            
-        //     pdfBuffer = HTTP.call( 'GET', "http://www.inema.ba.gov.br/wp-content/uploads/2011/08/Boletim-N"+changeNumber+"-Balneabilidade-para-Salvador-emitido-em-"+hoje+".pdf", { encoding: 'binary', responseType: 'buffer' });
-            
-        //     console.log("response"+changeNumber+": ----------------", pdfBuffer.statusCode);
-        //     if (pdfBuffer.statusCode !=200 && changeNumber<=60) {
-        //         changeNumber++;
-        //         responseTest();
-        //     }
-        //     if (pdfBuffer.statusCode ===200) {
-        //         // fullProccess("http://www.inema.ba.gov.br/wp-content/uploads/2011/08/Boletim-N20-Balneabilidade-para-Salvador-emitido-em-19-05-2017.pdf");
-        //         // fullProccess("http://www.inema.ba.gov.br/wp-content/uploads/2011/08/Boletim-N"+changeNumber+"-Balneabilidade-para-Salvador-emitido-em-"+hoje+".pdf");
-        //         console.log("code 200!");
-        //         arrayMaker();
-        //     }
-        //     if(changeNumber >= 60){
-        //         console.log("Data fim: ", hoje);
-        //         changeNumber=0;
-        //         return;
-        //     }
-        // }
         function responseTest(){
-            let ultimoBoletim = idEmitido.ultimoBoletim;
-            hoje = '26-05-2017-1';
-            // hoje = '19-05-2017';
-            pdfBuffer = HTTP.call('GET', "http://www.inema.ba.gov.br/wp-content/uploads/2011/08/Boletim-N"+ultimoBoletim+"-Balneabilidade-para-Salvador-emitido-em-"+hoje+".pdf", { encoding: 'binary', responseType: 'buffer' });
-            let url = "http://www.inema.ba.gov.br/wp-content/uploads/2011/08/Boletim-N"+ultimoBoletim+"-Balneabilidade-para-Salvador-emitido-em-"+hoje+".pdf";
-            // let url = "http://www.inema.ba.gov.br/wp-content/uploads/2011/08/Boletim-N20-Balneabilidade-para-Salvador-emitido-em-19-05-2017.pdf";
-            console.log("pdfBuffer", pdfBuffer);
-            if (pdfBuffer.statusCode === 200) {
-                console.log("foi pdfBuffer.content:", pdfBuffer.content);
+            let ultimoBoletim   = idEmitido.ultimoBoletim,
+                novoBoletim;
+                
+                console.log("ultimoBoletim", ultimoBoletim);
 
-                let index   = url.indexOf("N");
-                    url     = url.substring(index+1, index+3);
+                ultimoBoletim   = parseInt(ultimoBoletim);
+                novoBoletim     = ultimoBoletim + 1;
+                novoBoletim     = novoBoletim.toString();
                 
-                if (idEmitido) {
-                    if (idEmitido.ultimoBoletim) {
-                        console.log("idEmitido.ultimoBoletim", idEmitido.ultimoBoletim);
-                        console.log("url ultimoBoletim", url);
-                        Emitido.update({_id:idEmitido._id}, { $set:{ultimoBoletim:url} });
-                    }
-                    else{
-                        console.log("url ultimoBoletim", url);
-                        Emitido.insert({ultimoBoletim:url});
-                        console.log("Não tem idEmitido.ultimoBoletim");
-                    }
+                console.log("novoBoletim", novoBoletim);
+
+            // hoje = '26-05-2017-1';
+            // hoje = '19-05-2017';
+            console.log("hoje", hoje)
+            console.log("http://www.inema.ba.gov.br/wp-content/uploads/2011/08/Boletim-N"+novoBoletim+"-Balneabilidade-para-Salvador-emitido-em-"+hoje+"-1.pdf")
+            pdfBuffer = HTTP.call('GET', "http://www.inema.ba.gov.br/wp-content/uploads/2011/08/Boletim-N"+novoBoletim+"-Balneabilidade-para-Salvador-emitido-em-"+hoje+".pdf", { encoding: 'binary', responseType: 'buffer' }, function(error, response){
+                console.log("pdfBuffer", response);
+                if (error) {
+                    console.log("error!", error)
                 }
+                else if (response && response.statusCode === 200) {
+                    console.log("foi pdfBuffer.content:", response.content);
+                    console.log("idEmitido.ultimoBoletim", idEmitido.ultimoBoletim);
+                    console.log("url ultimoBoletim", novoBoletim);
+
+                    Emitido.update({_id:idEmitido._id}, { $set:{ultimoBoletim:novoBoletim} });
+                    
+                    pdfBuffer = response.content;
+                    arrayMaker(pdfBuffer);
                 
-                pdfBuffer = pdfBuffer.content;
-                arrayMaker(pdfBuffer);
-            
-            }
-            else{
-                console.log("Não foi");
-                return;
-            }
+                }
+                else{
+                    console.log("Não foi");
+                    return;
+                }
+
+            });
         }
 
         responseTest();
