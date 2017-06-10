@@ -1,3 +1,27 @@
+Template.listaPraias.onRendered(function () {
+
+	let instance = this;
+
+	window.scroll(0,0);
+
+	if (Session.equals("notifyUser", true)) {
+		$('.praias-header-wrapper').css('height', '72px');
+
+		instance.timeOutVar = Meteor.setTimeout(function(){
+			console.log("set time out");
+			$('.praias-header-wrapper').css('height', '0');
+			Session.set('notifyUser', false);
+		}, 5000);
+	}
+
+});	
+
+Template.listaPraias.onDestroyed(function(){
+	let instance = this;
+
+	Meteor.clearTimeout(instance.timeOutVar);
+});
+
 Template.listaPraias.helpers({
 	populatePraias: function(){
 		let zonaSet = Session.get("zona");
@@ -52,9 +76,6 @@ Template.sectionPraia.helpers({
 		return {_id: this._id};	
 	},
 });
-Template.listaPraias.onRendered(function () {
-	window.scroll(0,0);
-});	
 
 Template.listaPraias.events({
 	'keyup .search': function(e, t) {

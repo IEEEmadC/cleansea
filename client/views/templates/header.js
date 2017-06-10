@@ -18,10 +18,6 @@ Template.templateHeader.helpers({
 	},
 })
 
-Template.templateHeader.onRendered(function(){
-	console.log(Router.current().route.getName());
-})
-
 Template.templateHeader.events({
 	'click .btn-voltar': function(){
 		history.back();

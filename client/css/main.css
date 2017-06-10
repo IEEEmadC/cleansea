@@ -266,6 +266,33 @@ a:hover{
 	margin-bottom: 0;
 	color: #000;
 }
+.praias-header-wrapper{
+	background: #048BA8;
+	margin-top: -5px;
+	height: 0;
+	overflow: hidden;
+	color: #fff;
+	-webkit-transition: height 0.8s;
+	   -moz-transition: height 0.8s;
+		    transition: height 0.8s;
+}
+.praias-header-wrapper h4{
+	text-align: center;
+	font-size: 18px;
+	padding: 2px 32px;
+}
+@keyframes pulse {
+  0% {transform: scale(1);}
+  20% {transform: scale(1.4); } 
+  35% {transform: scale(1.6); } 
+  50% {transform: scale(.9);} 
+  65% {transform: scale(1.4);} 
+  80% {transform: scale(1.6);} 
+  100% {transform: scale(1.1);}
+}
+.help-badge{
+	animation: pulse 2s 1;
+}
 .component-praia{
 	width: 100%;
     /* margin: auto; */
