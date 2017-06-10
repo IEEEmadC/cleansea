@@ -1,22 +1,26 @@
 <template name="mainScreen">
 	<section class="container container-main">
 	<hr style="margin-bottom: 10px;">
-		<div class="numero-praias">
+		<div class="numero-praias clearfix">
+
 			<div class="emitido-title">
 				<h3>{{getEmitido}}</h3>
 			</div>
-			<div class="info-left-praia">
-				<h4>Próprias <br> Total</h4>
-			</div>
+
+			<div class="ct-chart"></div>
+		
 			<div class="info-right-praia">
-				<p style="color: #006994;">{{totalPraiasLimpas}}</p>
+				<p style="color: #006994;">{{totalPraiasLimpas}}<small>Próprias</small></p>
 			</div>
-			<div class="info-left-praia">
-				<h4>Impróprias <br> Total</h4>
-			</div>
+			<!-- <div class="info-left-praia">
+				<h4>Praias Próprias para Banho</h4>
+			</div> -->
 			<div class="info-right-praia">
-				<p style="color: #94000F;">{{totalPraiasSujas}}</p>
+				<p style="color: #94000F;">{{totalPraiasSujas}}<small>Impróprias</small></p>
 			</div>
+			<!-- <div class="info-left-praia">
+				<h4>Impróprias para Banho</h4>
+			</div> -->
 			<h5>Praias analisadas em Salvador: {{totalPraias}}</h5>
 		</div>
 		<div class="dummy-div"></div>
@@ -24,10 +28,10 @@
 			<p>As praias marcadas como Impróprias são aquelas em que foram encontradas um alto nível de  <em>Escherichia Coli</em>, bactéria encontrada nas fezes humanas e/ou de animais.</p>
 		</div>
 		<div class="texto-praias">
+			<p style="font-size: 16px;">Créditos</p>
 			<p>Todas as informações são retiradas do site do <a href="http://www.inema.ba.gov.br/" target="_blank">Inema</a> (Instituto do Meio Ambiente e Recursos Hídricos</p>
+			<p><a target="_blank" href="https://www.vexels.com/vectors/preview/137025/tsunami-water-wave"> Tsunami water wave </a> |   Designed by Vexels.com</p>
+			<p><a href="https://icons8.com">Icon pack by Icons8</a><a href='http://www.freepik.com/free-vector/abstract-blue-background-with-low-poly-triangle-shapes_1061467.htm'>Designed by Freepik</a></p>
 		</div>
-		<a target="_blank" href="https://www.vexels.com/vectors/preview/137025/tsunami-water-wave"> Tsunami water wave </a> |   Designed by Vexels.com
-		<a href="https://icons8.com">Icon pack by Icons8</a>
-		<a href='http://www.freepik.com/free-vector/abstract-blue-background-with-low-poly-triangle-shapes_1061467.htm'>Designed by Freepik</a>
 	</section>
 </template>
