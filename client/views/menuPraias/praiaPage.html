@@ -1,10 +1,14 @@
 <template name="praiaPage">
-	<hr style="margin-bottom: 21%;">
+	<hr style="margin-bottom: 8%;">
 {{#with model}}
-	<div class="praia-info-container" style="{{setColor this}}">
-		<h1 class="info-title"> {{praia}}</h1>
-		<p>Qualidade: {{qualidade}}</p>
-		<p>{{local}}</p>
-	</div>
+	<section class="praiaPage-holder">
+		<div class="praia-info-container">
+			<h1 class="info-title"> {{praia}}</h1>
+		</div>
+		<div class="info-praia-container">
+			<h3><i class="fa fa-info-circle" aria-hidden="true"></i> Qualidade: <strong>{{qualidade}}</strong></h3>
+			<h3><i class="fa fa-map-marker" aria-hidden="true"></i> {{local}}</h3>
+		</div>
+	</section>
 {{/with}}
 </template>

@@ -363,20 +363,39 @@ a:hover{
 }*/
 /*--------------------------------------END Mapa-------------------------------------*/
 /*--------------------------------------START Praia info-------------------------------------*/
+.praiaPage-holder{
+	background-image: url(propria2.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 86vh;
+    width: 100%;
+    position: fixed;
+}
 .praia-info-container{
-	margin-top: 15%;
 	text-align: center;
-	width: 95%;
-	margin: auto;
-	margin-bottom: 4%;
-	background-color: rgba(85, 212, 230, 0.7);
-	font-weight: bold;
-	border-radius: 15px;
-	height: auto;
-	padding: 22%;
+	background-color: transparent;
+	color: #fff;
+	min-height: 252px;
+	padding: 10px;
 }
 .info-title{
 	text-align: center;
+	padding-top: 54px;
+	font-size: 40px;
+	font-weight: bold;
+}
+.info-praia-container{
+	background: transparent;
+    height: 40vh;
+    /* padding-left: 12px; */
+    color: #fff;
+    text-align: left;
+}
+.info-praia-container h3{
+	margin: 0;
+	padding: 15px 0 15px 15px;
+	font-size: 22px;
 }
 /*--------------------------------------END Praia info-------------------------------------*/
 /*--------------------------------------START Chart-------------------------------------*/

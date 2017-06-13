@@ -11,7 +11,27 @@ Template.listaPraias.onRendered(function () {
 			console.log("set time out");
 			$('.praias-header-wrapper').css('height', '0');
 			Session.set('notifyUser', false);
-		}, 8000);
+		}, 7000);
+	}
+
+	let lastRoute = Session.get("lastRoute");
+	console.log("lastRoute", lastRoute);
+	if (lastRoute === 'praiaPage') {
+		let zona = Session.get("zona");
+		console.log("zona", zona);
+		if (zona === '1') {
+			$('.town.zona1-show').click();
+		}
+		else if(zona === '2') {
+			$('.town.zona2-show').click();
+		}
+		else if (zona === '3') {
+			$('.town.zona3-show').click();
+		}
+		else if (zona === '4') {
+			$('.town.zona4-show').click();
+		}
+		Session.set("lastRoute", '');
 	}
 
 });	
@@ -54,15 +74,6 @@ Template.sectionPraia.helpers({
 			return 'border-left: solid 10px #94000F;';
 		}
 	},
-	// setColor: function(praia){
-	// 	console.log("this", praia);
-	// 	if (praia.qualidade === 'Própria') {
-	// 		return 'background:#4AB096;';
-	// 	}
-	// 	else{
-	// 		return 'background:#94000F;';
-	// 	}
-	// },
 	returnIcon:function(qld){
 		if (qld === 'Própria') {
 			return 'check';
