@@ -11,7 +11,7 @@ Template.listaPraias.onRendered(function () {
 			console.log("set time out");
 			$('.praias-header-wrapper').css('height', '0');
 			Session.set('notifyUser', false);
-		}, 5000);
+		}, 8000);
 	}
 
 });	
@@ -82,14 +82,14 @@ Template.listaPraias.events({
 		e.preventDefault();
 		Router.current().search(t);
 	},
-	'click .town':function(e){
+	'click .town':function(e, t){
 		e.preventDefault();
-		console.log("height 0");
 		window.scroll(0,0);
-		$('.show-praias-all').css('height', 'auto');
-		$('.pseudo-back-btn').css('display', 'block');
-		$('.show-praias-all').css('display', 'block');
-		$('.section-lista-praias').toggle();
+		
+		t.$('.show-praias-all').css('height', 'auto');
+		t.$('.pseudo-back-btn').css('display', 'block');
+		t.$('.show-praias-all').css('display', 'block');
+		t.$('.section-lista-praias').toggle();
 	},
 	'click .pseudo-back-btn':function(e){
 		e.preventDefault();

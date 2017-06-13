@@ -117,9 +117,11 @@ a:hover{
 	width: 100%;
 	margin: auto;
 	/*margin-bottom: 4%;*/
-	background-color: #01A1FF;
+	background-color: #fff;
+	/*background-color: #01A1FF;*/
 	font-weight: bold;
-	color: #fff;
+	color: #000;
+	/*color: #fff;*/
 	padding: 5%;	
 	text-align: center;
 }
@@ -147,14 +149,20 @@ a:hover{
 /*--------------------------------------END Main Screen-------------------------------------*/
 /*--------------------------------------START Lista Praia-------------------------------------*/
 .town{
+	display: block;
+	overflow: hidden;
 	padding: 0;
 	background: transparent;
 	border:0;
-	/*margin-top:10px;*/
-	/*margin-top: -12px;*/
 	margin-top: -3px;
 	margin-bottom: 10px;
 	width: 100%;
+	-webkit-transition: height 3s;
+	   -moz-transition: height 3s;
+	    -ms-transition: height 3s;
+	     -o-transition: height 3s;
+			transition: height 3s;
+
 }
 .town.left img{
 	width: 100%;
