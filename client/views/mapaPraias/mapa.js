@@ -8,7 +8,7 @@ Template.mapaTemplate.helpers({
       return {
         center: new google.maps.LatLng(-12.894012, -38.429101),
         // center: new google.maps.LatLng(-12.974424, -38.465321),
-        zoom: 12,
+        zoom: 11,
         mapTypeControl: false,
         gestureHandling: 'greedy',
     		mapTypeControl: false,

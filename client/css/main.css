@@ -37,9 +37,9 @@ a:hover{
 	background-color: transparent;
 	border: none;
 	height: 100%;
-    font-size: 3rem;
     color: #fff;
-    padding-left: 2%;
+    font-size: 33px;
+	padding: 0 35px 0 0;
     display: inline-block;
 }
 .title-main-app{
@@ -314,6 +314,9 @@ a:hover{
     /* border-radius: 15px; */
     border-bottom: 0;
     border-top: 0;
+}
+.component-praia{
+	z-index: 5;
 }
 .component-praia:active{
 	margin-left: 4%;
