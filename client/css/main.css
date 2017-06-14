@@ -157,11 +157,12 @@ a:hover{
 	margin-top: -3px;
 	margin-bottom: 10px;
 	width: 100%;
-	-webkit-transition: height 3s;
-	   -moz-transition: height 3s;
-	    -ms-transition: height 3s;
-	     -o-transition: height 3s;
-			transition: height 3s;
+	height: 100%;
+	-webkit-transition: width 1s;
+	   -moz-transition: width 1s;
+	    -ms-transition: width 1s;
+	     -o-transition: width 1s;
+			transition: width 1s;
 
 }
 .town.left img{
@@ -217,13 +218,15 @@ a:hover{
 .show-praias-all{
 	display: none;
 	height: 0;
-	overflow: hidden;
+	overflow-x: hidden;
 	margin: 50px 0 50px 0;
-	-webkit-transition: height 1s;
-	-moz-transition: height 1s;
-	-ms-transition: height 1s;
-	-o-transition: height 1s;
-	transition: height 1s;
+	float: right;
+	width: 100%;
+	-webkit-transition: height .5s;
+	   -moz-transition: height .5s;
+	    -ms-transition: height .5s;
+	     -o-transition: height .5s;
+	        transition: height .5s;
 }
 .pseudo-back-btn{
 	position: fixed;
@@ -238,7 +241,7 @@ a:hover{
 }
 .show-praias-all .img-cover{
 	height: 178px;
-	width: 100%;
+	min-width: 100%;
 }
 .text-town{
 	position: absolute;
@@ -302,7 +305,8 @@ a:hover{
 	animation: pulse 2s 1;
 }
 .component-praia{
-	width: 100%;
+	min-width: 100%;
+	overflow:hidden;
     /* margin: auto; */
     /* margin-bottom: 4px; */
     background-color: #fff;

@@ -11,7 +11,7 @@ Template.listaPraias.onRendered(function () {
 			console.log("set time out");
 			$('.praias-header-wrapper').css('height', '0');
 			Session.set('notifyUser', false);
-		}, 7000);
+		}, 6000);
 	}
 
 	let lastRoute = Session.get("lastRoute");
@@ -97,19 +97,21 @@ Template.listaPraias.events({
 		e.preventDefault();
 		window.scroll(0,0);
 		
-		t.$('.show-praias-all').css('height', 'auto');
+		// t.$('.show-praias-all').css('height', 'auto');
 		t.$('.pseudo-back-btn').css('display', 'block');
 		t.$('.show-praias-all').css('display', 'block');
 		t.$('.section-lista-praias').toggle();
+		t.$('.show-praias-all').css('height', '100%');
 	},
 	'click .pseudo-back-btn':function(e){
 		e.preventDefault();
 		console.log("height 100%")
 		window.scroll(0,0);
-		$('.show-praias-all').css('height', '0');
+		// $('.show-praias-all').css('height', '0');
 		$('.show-praias-all').css('display', 'none');
 		$('.pseudo-back-btn').css('display', 'none');
 		$('.section-lista-praias').toggle();
+		$('.show-praias-all').css('height', '0');
 	},
 	'click .zona1-show':function(){
 		Session.set("zona", "1");

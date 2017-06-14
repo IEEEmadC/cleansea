@@ -20,6 +20,6 @@ Template.templateHeader.helpers({
 
 Template.templateHeader.events({
 	'click .btn-voltar': function(){
-		Router.go('listaPraias');
+		Router.go('/');
 	},
 });

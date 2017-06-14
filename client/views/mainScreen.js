@@ -1,6 +1,3 @@
-dirtyInit = new ReactiveVar(),
-cleanInit = new ReactiveVar();
-
 Template.mainScreen.onRendered(function () {
 	chart = {
 		target: 'chart1',
@@ -14,12 +11,11 @@ Template.mainScreen.onRendered(function () {
 			['Impróprias', count2],
 		],
 		options: {
-		// is3D: true,
 		pieSliceText: 'none',
 		legend: 'none',
 		slices: {
 				0: { color: '#006994' },
-				1: { color: '#94000F' }
+				1: { color: '#b20000' }
 			}
 		}
 	};
@@ -54,8 +50,6 @@ Template.mainScreen.helpers({
 
 			Session.set("praiasSujas", count2);
 
-			// cleanInit.set(count);
-			// dirtyInit.set(count2);
 			let intervalChart = Meteor.setInterval(function(){
 				if ($('svg') && $('svg').length <= 0 ) {
 					chart = {
@@ -70,12 +64,11 @@ Template.mainScreen.helpers({
 				        ['Impróprias', count2],
 				      ],
 				      options: {
-				      	// is3D: true,
 				      	pieSliceText: 'none',
 				      	legend: 'none',
 				      	slices: {
 				            0: { color: '#006994' },
-				            1: { color: '#94000F' }
+				            1: { color: '#b20000' }
 				          }
 				      }
 				    };
