@@ -65,6 +65,10 @@ Template.listaPraias.helpers({
 });
 
 Template.sectionPraia.helpers({
+	codeFormat:function(codigo){
+		console.log("codigo", codigo);
+		return codigo.slice(3);
+	},
 	setColor: function(praia){
 		console.log("this", praia);
 		if (praia.qualidade === 'Própria') {

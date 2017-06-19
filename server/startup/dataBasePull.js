@@ -26,7 +26,7 @@ Meteor.startup(function () {
     // │    └──────────────────── minute (0 - 59)
     // └───────────────────────── second (0 - 59, OPTIONAL)
 
-    let pullDB = schedule.scheduleJob('00 00 12 * * *', Meteor.bindEnvironment(function () {
+    let pullDB = schedule.scheduleJob('00 00 19 * * *', Meteor.bindEnvironment(function () {
         console.log("Schedule!!");
         let pdfParser         = new PDFParser(this,1),
             arrayPraias       = [],
@@ -47,13 +47,14 @@ Meteor.startup(function () {
                 ultimoBoletim   = parseInt(ultimoBoletim);
                 novoBoletim     = ultimoBoletim + 1;
                 novoBoletim     = novoBoletim.toString();
-                
+                novoBoletim = '24';
+
                 console.log("novoBoletim", novoBoletim);
 
             // hoje = '26-05-2017-1';
-            // hoje = '19-05-2017';
+            hoje = '16-06-2017';
             console.log("hoje", hoje)
-            console.log("http://www.inema.ba.gov.br/wp-content/uploads/2011/08/Boletim-N"+novoBoletim+"-Balneabilidade-para-Salvador-emitido-em-"+hoje+"-1.pdf")
+            console.log("http://www.inema.ba.gov.br/wp-content/uploads/2011/08/Boletim-N"+novoBoletim+"-Balneabilidade-para-Salvador-emitido-em-"+hoje+".pdf")
             pdfBuffer = HTTP.call('GET', "http://www.inema.ba.gov.br/wp-content/uploads/2011/08/Boletim-N"+novoBoletim+"-Balneabilidade-para-Salvador-emitido-em-"+hoje+".pdf", { encoding: 'binary', responseType: 'buffer' }, function(error, response){
                 console.log("pdfBuffer", response);
                 if (error) {
@@ -132,54 +133,52 @@ Meteor.startup(function () {
 
             arrayPraias = [];
 
-            // console.log("done!", jsonA);
+            console.log("done!", jsonPull);
             console.log("call bdPopulate");
+            console.log("jsonPull.array.length",jsonPull.array.length);
                     
             // PopulateBD
-            for (var i = 1; i < jsonPull.array.length; i++) {
-                console.log("Index: ", i);
-                console.log("Praia: ", jsonPull.array[i].Praia);
-                // console.log("FInd", Praias.findOne({codigo:jsonPull.array[i].Codigo}));
-                
-                // If do emitido  
-                console.log("Emitido:", jsonPull.array[0])
-                // let idEmitido = Emitido.findOne(); 
-                if ( idEmitido ) {
-                    Emitido.update({_id:idEmitido._id},
-                                {
-                                    $set: {
-                                        emitido: jsonPull.array[0]
+            jsonPull.array.forEach(function(item, index){
+                if (index === 0) {
+                    if ( idEmitido ) {
+                        Emitido.update({_id:idEmitido._id},
+                                    {
+                                        $set: {
+                                            emitido: jsonPull.array[0]
+                                        }
                                     }
-                                }
-                    );                        
-                }
-                else{ 
-                    Emitido.insert({emitido:jsonPull.array[0]});
-                }
-
-                // If das praias
-                if (Praias.findOne({codigo:jsonPull.array[i].Codigo})) {
-                    console.log("Entrou no if");
-                    return Praias.update({codigo:jsonPull.array[i].Codigo},
-                                {
-                                    $set: {
-                                        codigo: jsonPull.array[i].Codigo, 
-                                        praia:jsonPull.array[i].Praia,
-                                        qualidade: jsonPull.array[i].Qualidade,
-                                        local: jsonPull.array[i].Local
-                                    }
-                                }
-                    );
+                        );                        
+                    }
+                    else{ 
+                        Emitido.insert({emitido:jsonPull.array[0]});
+                    }
                 }
                 else{
-                    return Praias.insert({
-                                    codigo: jsonPull.array[i].Codigo, 
-                                    praia:jsonPull.array[i].Praia,
-                                    qualidade: jsonPull.array[i].Qualidade,
-                                    local: jsonPull.array[i].Local
-                                  });
+                    if (Praias.findOne({codigo:item.Codigo})) {
+                        console.log("Entrou no if");
+                        Praias.update({codigo:item.Codigo},
+                                    {
+                                        $set: {
+                                            codigo: item.Codigo, 
+                                            praia:item.Praia,
+                                            qualidade: item.Qualidade,
+                                            local: item.Local
+                                        }
+                                    }
+                        );
+                    }
+                    else{
+                        console.log("Entrou no else");
+                        Praias.insert({
+                                        codigo: item.Codigo, 
+                                        praia:item.Praia,
+                                        qualidade: item.Qualidade,
+                                        local: item.Local
+                                      });
+                    }
+
                 }
-            }
+            });
 
         }) );
 
