@@ -15,15 +15,15 @@ Meteor.methods({
             pdfBuffer, temp, temp2, temp3, temp4, data;
 
         function responseTest(){
-            let ultimoBoletim   = idEmitido.ultimoBoletim,
-                novoBoletim;
+            // let ultimoBoletim   = idEmitido.ultimoBoletim,
+            //     novoBoletim;
                 
-                console.log("ultimoBoletim", ultimoBoletim);
+                // console.log("ultimoBoletim", ultimoBoletim);
 
-                ultimoBoletim   = parseInt(ultimoBoletim);
-                novoBoletim     = ultimoBoletim + 1;
-                novoBoletim     = novoBoletim.toString();
-                novoBoletim = '24';
+                // ultimoBoletim   = parseInt(ultimoBoletim);
+                // novoBoletim     = ultimoBoletim + 1;
+                // novoBoletim     = novoBoletim.toString();
+               let novoBoletim = '24';
 
                 console.log("novoBoletim", novoBoletim);
 
@@ -54,5 +54,7 @@ Meteor.methods({
 
             });
         }
+	
+		responseTest();
 	}
 });
