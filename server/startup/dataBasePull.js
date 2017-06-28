@@ -20,7 +20,7 @@ Meteor.startup(function () {
     // │    └──────────────────── minute (0 - 59)
     // └───────────────────────── second (0 - 59, OPTIONAL)
 
-    let pullDB = schedule.scheduleJob('00 55 14 * * *', Meteor.bindEnvironment(function () {
+    let pullDB = schedule.scheduleJob('00 00 12 * * *', Meteor.bindEnvironment(function () {
         console.log("Schedule!!");
         let pdfParser         = new PDFParser(this,1),
             arrayPraias       = [],

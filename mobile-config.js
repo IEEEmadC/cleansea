@@ -49,3 +49,6 @@ App.setPreference('Orientation', 'portrait');
 //     <host name="localhost:3000" />
 //   </universal-links>
 // `);
+App.accessRule('http://*');
+App.accessRule('https://*');
+App.accessRule('*', { type: 'navigation' });
