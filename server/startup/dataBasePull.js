@@ -8,14 +8,8 @@ moment.tz.setDefault('America/Bahia');
 Meteor.startup(function () {
     console.log("Teste de startup");
     
-    // let testeJob = schedule.scheduleJob('42 * * * * *', Meteor.bindEnvironment(function () {
-        
-    //     var now = moment();
-
-    //     console.log("the answer to life, the universe, and everything!");
-    //     console.log(now.format("DD/MM/YYYY HH:mm"));
-    // }));
-
+    // Schedule Reference
+    // -------------------------------------------------
     // *    *    *    *    *    *
     // ┬    ┬    ┬    ┬    ┬    ┬
     // │    │    │    │    │    |
@@ -26,7 +20,7 @@ Meteor.startup(function () {
     // │    └──────────────────── minute (0 - 59)
     // └───────────────────────── second (0 - 59, OPTIONAL)
 
-    let pullDB = schedule.scheduleJob('00 00 19 * * *', Meteor.bindEnvironment(function () {
+    let pullDB = schedule.scheduleJob('00 00 12 * * *', Meteor.bindEnvironment(function () {
         console.log("Schedule!!");
         let pdfParser         = new PDFParser(this,1),
             arrayPraias       = [],
@@ -47,12 +41,12 @@ Meteor.startup(function () {
                 ultimoBoletim   = parseInt(ultimoBoletim);
                 novoBoletim     = ultimoBoletim + 1;
                 novoBoletim     = novoBoletim.toString();
-                novoBoletim = '24';
+                // novoBoletim = '24';
 
                 console.log("novoBoletim", novoBoletim);
 
             // hoje = '26-05-2017-1';
-            hoje = '16-06-2017';
+            // hoje = '16-06-2017';
             console.log("hoje", hoje)
             console.log("http://www.inema.ba.gov.br/wp-content/uploads/2011/08/Boletim-N"+novoBoletim+"-Balneabilidade-para-Salvador-emitido-em-"+hoje+".pdf")
             pdfBuffer = HTTP.call('GET', "http://www.inema.ba.gov.br/wp-content/uploads/2011/08/Boletim-N"+novoBoletim+"-Balneabilidade-para-Salvador-emitido-em-"+hoje+".pdf", { encoding: 'binary', responseType: 'buffer' }, function(error, response){
