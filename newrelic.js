@@ -10,7 +10,7 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name: ['praiaGet'],
+  app_name: ['cleansea'],
   /**
    * Your New Relic license key.
    */
