@@ -1,8 +1,25 @@
 <template name="mapaTemplate">
 	<hr style="margin-bottom: 11%;">
 
+		<aside id="sideMenu" class="list-section">
+
+			<div class="form-group">
+				<input class="form-control" id="search-bar" placeholder="Search…" type="search" autocomplete="off">				
+			</div>
+
+			<ul class="locais-names">
+				{{#each markersGet}}
+					<li class="side-menu-item">
+						<p>{{praia}}</p> 
+						<p><small>{{codigo}}</small></p>
+					</li>
+				{{/each}}
+			</ul>
+
+		</aside>
+		
 		<div class="map-container">
-	    {{> googleMap name="map" options=mapOptions}}
+	    	{{> googleMap name="map" options=mapOptions}}
 	  	</div>
 
 

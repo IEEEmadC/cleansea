@@ -1,71 +1,138 @@
-Template.mapaTemplate.onRendered(function() {
-	 GoogleMaps.load();
-});
+var changeNames = new ReactiveVar();
 
-Template.mapaTemplate.helpers({  
-  mapOptions: function() {
-    if (GoogleMaps.loaded()) {
-      return {
-        center: new google.maps.LatLng(-12.894012, -38.429101),
-        // center: new google.maps.LatLng(-12.974424, -38.465321),
-        zoom: 11,
-        mapTypeControl: false,
-        gestureHandling: 'greedy',
-    		mapTypeControl: false,
-    		scaleControl: false,
-    		streetViewControl: false,
-    		rotateControl: false,
-    		fullscreenControl: false,
-        styles: [
-            {
-                "featureType": "water",
-                "elementType": "geometry",
-                "stylers": [
-                    {
-                        "color": "#A3CCFF"
-                    },
-                    {
-                        "lightness": "5"
-                    },
-                    {
-                        "gamma": "1.10"
-                    }
-                ]
-            },
-        ]
-      };
-    }
-  }
-});
-Template.mapaTemplate.onCreated(function() {  
-  GoogleMaps.ready('map', function(map) {
-     console.log("I'm ready!");
-      let praias = Praias.find().fetch(),
-          iconImg,
-          infowindow = new google.maps.InfoWindow({
-              content: "Empty"
-          });
+function pinMap(instance, map){
 
-     praias.forEach(function(item){
-        console.log("Quali", item)
-        if (item.qualidade === 'Própria') {
-            iconImg = 'img/markerOk.png'; 
-        }
-        else{
-            iconImg = 'img/markerNo.png'; 
-        }
-        let marker = new google.maps.Marker({
-                draggable: false,
-                position: new google.maps.LatLng(item.latitude, item.longitude),
-                map: map.instance,
-                icon: iconImg,
+    let iconImg,
+        infowindow = new google.maps.InfoWindow({
+            content: "Empty"
+        }),
+        arrayToSet = []; 
+
+    instance.data.praias.forEach(function(item){
+            // console.log("Quali", item)
+            if (item.qualidade === 'Própria') {
+                iconImg = 'img/markerOk.png'; 
+            }
+            else{
+                iconImg = 'img/markerNo.png'; 
+            }
+            let marker = new google.maps.Marker({
+                    draggable: false,
+                    position: new google.maps.LatLng(item.latitude, item.longitude),
+                    map: map.instance,
+                    icon: iconImg,
+                    praia: item.praia,
+                    codigo: item.codigo
+                });
+            arrayToSet.push(marker);
+            instance.data.markerArray.set(arrayToSet);
+            // console.log("marker", marker);
+
+            marker.addListener('click', function() {
+                infowindow.open(map, marker);
+                infowindow.setContent('<h4>Nome: '+ item.praia + '<br> Qualidade: ' + item.qualidade + '</h4>');
             });
 
-        marker.addListener('click', function() {
-            infowindow.open(map, marker);
-            infowindow.setContent('<h4>Nome: '+ item.praia + '<br> Qualidade: ' + item.qualidade + '</h4>');
         });
+}
 
-     });
+Template.mapaTemplate.onRendered(function() {
+	 GoogleMaps.load();
+
+});
+
+Template.mapaTemplate.events({
+    'click .closebtn':function(){
+        $('.list-section').css('width', '0');
+    },
+    'keyup #search-bar':function(e){
+        console.log("e", e.currentTarget.value);
+        let valueToFind = e.currentTarget.value;
+        let regexMatch = new RegExp(valueToFind, 'g');
+        Template.instance().data.markerArray.get().forEach(function(item){
+            if (e.currentTarget.value === '') {
+                item.setVisible(true);
+                changeNames.set(true);
+                changeNames.set(false);
+            }
+            if ( item.praia.match(regexMatch) ) {
+                console.log('itempraia', item.praia);
+                item.setVisible(true);
+                changeNames.set(true);
+            }
+            else{
+                item.setVisible(false);
+                changeNames.set(false);
+            }
+        });
+    },
+})
+
+Template.mapaTemplate.helpers({  
+    markersGet:function(){
+        changeNames.get();
+
+        let markers = Template.instance().data.markerArray.get();
+
+        console.log("markerArray", markers);
+        
+        let newMarkers = markers.filter(function(item){
+            if (item.getVisible()) {
+                console.log('item.praia', item.praia);
+                console.log('item.getVisible()', item.getVisible());
+                return item;
+            }
+        });
+        
+        console.log('markers', newMarkers);
+        
+        return newMarkers;
+    },
+    mapOptions: function() {
+        if (GoogleMaps.loaded()) {
+          return {
+            center: new google.maps.LatLng(-12.894012, -38.429101),
+            // center: new google.maps.LatLng(-12.974424, -38.465321),
+            zoom: 11,
+            mapTypeControl: false,
+            gestureHandling: 'greedy',
+        		mapTypeControl: false,
+        		scaleControl: false,
+        		streetViewControl: false,
+        		rotateControl: false,
+        		fullscreenControl: false,
+            styles: [
+                {
+                    "featureType": "water",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "color": "#A3CCFF"
+                        },
+                        {
+                            "lightness": "5"
+                        },
+                        {
+                            "gamma": "1.10"
+                        }
+                    ]
+                },
+            ]
+          };
+        }
+    }
+});
+Template.mapaTemplate.onCreated(function() {  
+    let instance = this;
+
+    console.log('instance', instance);
+
+    GoogleMaps.ready('map', function(map) {
+        console.log("I'm ready!");  
+
+        pinMap(instance, map);  
+
+    console.log('instance', instance);
+        
   });
 });

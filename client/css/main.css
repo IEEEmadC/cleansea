@@ -17,14 +17,14 @@ button, a{
 a:hover{
 	text-decoration: none;
 }
+ul{
+	list-style-type: none;
+}
 /*--------------------------------------START HEADER-------------------------------------*/
 .header-main-nav{
 	width: 100%;
     height: 52px;
     background-color: #048BA8;
-    /*background-color: #6f9ad4;*/
-    /*background-color: rgba(90,200,250, 1);*/
-    /*background-color: #fff;*/
     font-family: 'Pacifico', cursive;
     position: fixed;
     top: 0;
@@ -41,6 +41,15 @@ a:hover{
     font-size: 33px;
 	padding: 0 35px 0 0;
     display: inline-block;
+}
+.btn-mapa-interaction{
+	background-color: transparent;
+	border: none;
+	height: 100%;
+    color: #fff;
+    font-size: 28px;
+	padding: 0 35px 4px 12px;
+    display: inline-block;	
 }
 .title-main-app{
 	color: #fff;
@@ -357,8 +366,38 @@ a:hover{
 }
 /*--------------------------------------END Lista Praia-------------------------------------*/
 /*--------------------------------------START Mapa -------------------------------------*/
-.map-relative{
-	/*position: relative;*/
+.list-section{
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: rgba(224,224,224, 0.9);
+	overflow-x: hidden;
+	padding-top: 44px;
+	-webkit-transition: 0.5s;
+	   -moz-transition: 0.5s;
+			transition: 0.5s;
+}
+.locais-names{
+	min-width: 225px;
+}
+#search-bar{
+	background: #fff;
+	color: #000;
+	border: none;
+	box-shadow: none;
+	height: 54px;
+	font-size: 18px;
+	margin-top: 10px;
+	border-radius: 0;
+}
+.side-menu-item{
+	margin-bottom: 16px;
+}
+.side-menu-item p{
+	margin-bottom: 0;
 }
 .map-container {
 	width: 100%;
