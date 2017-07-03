@@ -316,20 +316,13 @@ ul{
 .component-praia{
 	min-width: 100%;
 	overflow:hidden;
-    /* margin: auto; */
-    /* margin-bottom: 4px; */
     background-color: #fff;
     font-weight: bold;
-    /* border-radius: 15px; */
     border-bottom: 0;
     border-top: 0;
 }
 .component-praia{
 	z-index: 5;
-}
-.component-praia:active{
-	margin-left: 4%;
-	margin-right: 0;
 }
 .component-praia-inner-wrapper{
 	padding:3%;

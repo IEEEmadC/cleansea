@@ -101,7 +101,6 @@ Template.listaPraias.events({
 		e.preventDefault();
 		window.scroll(0,0);
 		
-		// t.$('.show-praias-all').css('height', 'auto');
 		t.$('.pseudo-back-btn').css('display', 'block');
 		t.$('.show-praias-all').css('display', 'block');
 		t.$('.section-lista-praias').toggle();
@@ -109,9 +108,9 @@ Template.listaPraias.events({
 	},
 	'click .pseudo-back-btn':function(e){
 		e.preventDefault();
-		console.log("height 100%")
+		
 		window.scroll(0,0);
-		// $('.show-praias-all').css('height', '0');
+
 		$('.show-praias-all').css('display', 'none');
 		$('.pseudo-back-btn').css('display', 'none');
 		$('.section-lista-praias').toggle();
