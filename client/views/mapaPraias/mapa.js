@@ -45,15 +45,39 @@ Template.mapaTemplate.events({
     'click .closebtn':function(){
         $('.list-section').css('width', '0');
     },
-    'keyup #search-bar':function(e){
+    'click .side-menu-item':function(e, t){
+
+        let codigoClick = e.currentTarget.attributes[1].value;
+
+        t.data.markerArray.get().forEach(function(item){
+            if (item.codigo === codigoClick) {
+                item.map.setCenter({
+                    lat : item.position.lat(),
+                    lng : item.position.lng()
+                });
+                item.map.setZoom(12);
+
+                $('.list-section').css('width', '0');
+                $('.btn-mapa-interaction').addClass('btn-search');
+                $('.btn-mapa-interaction').removeClass('closebtn');
+            }
+        });
+
+    },
+    'keyup #search-bar':function(e, t){
         console.log("e", e.currentTarget.value);
         let valueToFind = e.currentTarget.value;
         let regexMatch = new RegExp(valueToFind, 'g');
-        Template.instance().data.markerArray.get().forEach(function(item){
+        t.data.markerArray.get().forEach(function(item){
             if (e.currentTarget.value === '') {
                 item.setVisible(true);
                 changeNames.set(true);
                 changeNames.set(false);
+                item.map.setZoom(11);
+                item.map.setCenter({
+                    lat: -12.894012,
+                    lng: -38.429101
+                });
             }
             if ( item.praia.match(regexMatch) ) {
                 console.log('itempraia', item.praia);
@@ -78,8 +102,6 @@ Template.mapaTemplate.helpers({
         
         let newMarkers = markers.filter(function(item){
             if (item.getVisible()) {
-                console.log('item.praia', item.praia);
-                console.log('item.getVisible()', item.getVisible());
                 return item;
             }
         });
@@ -130,6 +152,8 @@ Template.mapaTemplate.onCreated(function() {
     GoogleMaps.ready('map', function(map) {
         console.log("I'm ready!");  
 
+        instance.data.globalMap = map;
+        
         pinMap(instance, map);  
 
     console.log('instance', instance);
