@@ -104,7 +104,8 @@ Template.listaPraias.events({
 		t.$('.pseudo-back-btn').css('display', 'block');
 		t.$('.show-praias-all').css('display', 'block');
 		t.$('.section-lista-praias').toggle();
-		t.$('.show-praias-all').css('height', '100%');
+		t.$('.show-praias-all').css('height', 'auto');
+		// t.$('.show-praias-all').css('height', '100%');
 	},
 	'click .pseudo-back-btn':function(e){
 		e.preventDefault();
