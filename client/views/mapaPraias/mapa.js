@@ -1,5 +1,13 @@
 var changeNames = new ReactiveVar();
-
+function removeAcento (text){                                                                  
+    text = text.replace(new RegExp('[ÁÀÂÃ]','gi'), 'a');
+    text = text.replace(new RegExp('[ÉÈÊ]','gi'), 'e');
+    text = text.replace(new RegExp('[ÍÌÎ]','gi'), 'i');
+    text = text.replace(new RegExp('[ÓÒÔÕ]','gi'), 'o');
+    text = text.replace(new RegExp('[ÚÙÛ]','gi'), 'u');
+    text = text.replace(new RegExp('[Ç]','gi'), 'c');
+    return text;               
+}
 function pinMap(instance, map){
 
     let iconImg,
@@ -66,8 +74,9 @@ Template.mapaTemplate.events({
     },
     'keyup #search-bar':function(e, t){
         console.log("e", e.currentTarget.value);
-        let valueToFind = e.currentTarget.value;
-        let regexMatch = new RegExp(valueToFind, 'g');
+        let valueToFind = removeAcento(e.currentTarget.value.toLowerCase()),
+            regexMatch = new RegExp(valueToFind, 'g'),
+            testeItem;
         t.data.markerArray.get().forEach(function(item){
             if (e.currentTarget.value === '') {
                 item.setVisible(true);
@@ -79,7 +88,8 @@ Template.mapaTemplate.events({
                     lng: -38.429101
                 });
             }
-            if ( item.praia.match(regexMatch) ) {
+            testeItem = removeAcento(item.praia.toLowerCase());
+            if ( testeItem.match(regexMatch) ) {
                 console.log('itempraia', item.praia);
                 item.setVisible(true);
                 changeNames.set(true);
