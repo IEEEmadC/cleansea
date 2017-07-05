@@ -103,6 +103,15 @@ Template.mapaTemplate.events({
 })
 
 Template.mapaTemplate.helpers({  
+    codeFormat:function(codigo){
+        console.log("codigo", codigo);
+        if (codigo.indexOf('200') !== -1 && codigo.indexOf('CO') === -1 
+            && codigo.indexOf('AR') === -1 && codigo.indexOf('BO') === -1
+             && codigo.indexOf('PR') === -1) {
+            return '2';
+        }
+        return;
+    },
     markersGet:function(){
         changeNames.get();
 
