@@ -45,7 +45,7 @@ Template.listaPraias.onDestroyed(function(){
 Template.listaPraias.helpers({
 	populatePraias: function(){
 		let zonaSet = Session.get("zona");
-		return Praias.find({zona:zonaSet}).fetch();
+		return Praias.find({zona:zonaSet}, { sort:{codigo:1} }).fetch();
 	},
 	getPraiaImg: function(){
 		console.log("which praia?", Session.get("zona"))	
@@ -67,7 +67,12 @@ Template.listaPraias.helpers({
 Template.sectionPraia.helpers({
 	codeFormat:function(codigo){
 		console.log("codigo", codigo);
-		return codigo.slice(3);
+		if (codigo.indexOf('200') !== -1 && codigo.indexOf('CO') === -1 
+			&& codigo.indexOf('AR') === -1 && codigo.indexOf('BO') === -1
+			 && codigo.indexOf('PR') === -1) {
+			return '2';
+		}
+		return;
 	},
 	setColor: function(praia){
 		console.log("this", praia);
