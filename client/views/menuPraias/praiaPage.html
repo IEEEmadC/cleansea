@@ -6,8 +6,8 @@
 			<h1 class="info-title"> {{praia}}</h1>
 		</div>
 		<div class="info-praia-container">
-			<h3><i class="fa fa-info-circle" aria-hidden="true"></i> Qualidade: <strong>{{qualidade}}</strong></h3>
-			<h3><i class="fa fa-map-marker" aria-hidden="true"></i> {{local}}</h3>
+			<h3><i class="fa fa-info-circle" aria-hidden="true"></i> {{#if englishSetter}}Quality:{{else}}Qualidade: {{/if}}<strong> {{setEnglish qualidade}}</strong></h3>
+			<h3><i class="fa fa-map-marker" aria-hidden="true"></i> {{#if englishSetter}}Check in the map{{else}}{{local}}{{/if}}</h3>
 		</div>
 	</section>
 {{/with}}

@@ -38,7 +38,20 @@ function pinMap(instance, map){
 
             marker.addListener('click', function() {
                 infowindow.open(map, marker);
-                infowindow.setContent('<h4>Nome: '+ item.praia + '<br> Qualidade: ' + item.qualidade + '</h4>');
+
+                if (Session.get('englishSet')) {
+                    if (item.qualidade === 'Imprópria') {
+                        item.qualidade = 'Unsuitable';
+                    }
+                    else{
+                        item.qualidade = 'Suitable';
+                    }
+                    infowindow.setContent('<h4>Name: '+ item.praia + '<br> Quality: ' + item.qualidade + '</h4>');
+                }
+                else{
+                    infowindow.setContent('<h4>Nome: '+ item.praia + '<br> Qualidade: ' + item.qualidade + '</h4>');
+                }
+
             });
 
         });

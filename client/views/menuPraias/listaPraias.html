@@ -6,7 +6,11 @@
 		<hr style="margin-bottom: 18px;">
 		
 		<div class="praias-header-wrapper">
-			<h4>Escolha pela zona para ver quais praias estão próprias para banho <i class="fa fa-exclamation-circle help-badge" aria-hidden="true"></i></h4>
+			<h4>{{#if englishSetter}}
+					Pick a region and check which beachs are suitable to take a dive
+				{{else}}
+					Escolha pela zona para ver quais praias estão próprias para banho
+				{{/if}} <i class="fa fa-exclamation-circle help-badge" aria-hidden="true"></i></h4>
 		</div>
 		
 		<div class="button-cities-holder">
@@ -16,8 +20,13 @@
 					<img src="/suburbio.jpg">
 					<div class="style-city">
 						<div class="text-town text-downtown">
-							<h3>Zona 1</h3>
-							<h4> - Subúrbio</h4>
+							{{#if englishSetter}}
+								<h3>Region 1</h3>
+								<h4> - Suburb</h4>
+							{{else}}
+								<h3>Zona 1</h3>
+								<h4> - Subúrbio</h4>
+							{{/if}}
 						</div>
 					</div>
 				</figure>
@@ -28,8 +37,13 @@
 					<img src="/pelourinho4.jpg" style="height: 176px;">
 					<div class="style-city">
 						<div class="text-town text-uptown">
-							<h3>Zona 2</h3>
-							<h4> - Cidade Baixa</h4>
+							{{#if englishSetter}}
+								<h3>Region 2</h3>
+								<h4> - Downtown</h4>
+							{{else}}
+								<h3>Zona 2</h3>
+								<h4> - Cidade Baixa</h4>
+							{{/if}}							
 						</div>
 					</div>
 				</figure>
@@ -40,7 +54,11 @@
 					<img src="/farolBarra2.jpg">
 					<div class="style-city">
 						<div class="text-town text-downtown">
-							<h3>Zona 3</h3>
+							<h3>{{#if englishSetter}}
+									Region 3
+								{{else}}
+									Zona 3
+								{{/if}}</h3>
 							<h4> - Barra/Pituba</h4>
 						</div>
 
@@ -53,7 +71,11 @@
 					<img src="/farolitapua.jpg">
 					<div class="style-city">
 						<div class="text-town text-uptown">
-							<h3>Zona 4</h3>
+							<h3>{{#if englishSetter}}
+									Region 4
+								{{else}}
+									Zona 4
+								{{/if}}</h3>
 							<h4> - Itapuã/Ipitanga</h4>
 						</div>
 					</div>
@@ -79,7 +101,7 @@
 					<!-- <i class="icon-praia fa fa-{{returnIcon qualidade}}" aria-hidden="true"></i> -->
 				</div>
 				<div class="praia-inside-comp praia-in-name">
-					<p>Praia {{praia}} {{codeFormat codigo}}</p>
+					<p>{{#if englishSetter}}{{praia}} Beach {{codeFormat codigo}} {{else}}Praia {{praia}}  {{codeFormat codigo}} {{/if}}</p>
 				</div>
 				<button class="praia-inside-comp praia-in-btn"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
 				</div>
