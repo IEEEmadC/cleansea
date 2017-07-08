@@ -1,5 +1,4 @@
 Template.listaPraias.onRendered(function () {
-Session.set('englishSet',true);
 	let instance = this;
 
 	window.scroll(0,0);

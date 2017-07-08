@@ -1,3 +1,5 @@
+
+
 Template.praiaPage.onRendered(function(){
 	window.scroll(0,0);
 });
@@ -15,5 +17,5 @@ Template.praiaPage.helpers({
         else{
         	return text;
         }
-	}
+	},
 })

@@ -10,22 +10,100 @@
 			<div id="chart1" style="float:left;overflow:hidden;width: 50%;" width="50%"></div>
 		
 			<div class="info-right-praia">
-				<p style="color: #006994;">{{totalPraiasLimpas}}<small>Próprias</small></p>
+				<p style="color: #006994;">
+					{{totalPraiasLimpas}}
+					<small>
+						{{#if englishSetter}}
+							 Suitable
+						{{else}}
+							 Próprias
+						{{/if}}
+					</small>
+				</p>
 			</div>
+
 			<div class="info-right-praia">
-				<p style="color: #b20000;">{{totalPraiasSujas}}<small>Impróprias</small></p>
+				<p style="color: #b20000;">
+					{{totalPraiasSujas}}
+					<small>
+						{{#if englishSetter}}
+							 Unsuitable
+						{{else}}
+							 Impróprias
+						{{/if}}
+					</small>
+				</p>
 			</div>
-			<h5>Praias analisadas em Salvador: {{totalPraias}}</h5>
+
+			<h5>
+				{{#if englishSetter}}
+					 Total of analyzed beaches in Salvador: {{totalPraias}}
+				{{else}}
+					 Praias analisadas em Salvador: {{totalPraias}}
+				{{/if}}
+			</h5>
 		</div>
+
 		<div class="dummy-div"></div>
+
 		<div class="texto-praias">
-			<p>As praias marcadas como Impróprias são aquelas em que foram encontradas um alto nível de  <em>Escherichia Coli</em>, bactéria encontrada nas fezes humanas e/ou de animais.</p>
+			<p>
+				{{#if englishSetter}}
+					 Unsuitable beaches are those where high levels of <em>Escherichia Coli</em> - a bacteria that lives on human and animal feces - were found.
+				{{else}}
+					 As praias marcadas como Impróprias são aquelas em que foram encontradas um alto nível de <em>Escherichia Coli</em>, bactéria encontrada nas fezes humanas e/ou de animais.
+				{{/if}}
+			</p>
 		</div>
+		
 		<div class="texto-praias">
-			<p style="font-size: 16px;">Créditos</p>
-			<p>Todas as informações são retiradas do site do <a href="http://www.inema.ba.gov.br/" target="_blank">Inema</a> (Instituto do Meio Ambiente e Recursos Hídricos</p>
-			<p><a target="_blank" href="https://www.vexels.com/vectors/preview/137025/tsunami-water-wave"> Tsunami water wave </a> |   Designed by Vexels.com</p>
-			<p><a href="https://icons8.com">Icon pack by Icons8</a><a href='http://www.freepik.com/free-vector/abstract-blue-background-with-low-poly-triangle-shapes_1061467.htm'>Designed by Freepik</a></p>
+			<p style="font-size: 16px;">
+				{{#if englishSetter}}
+					<i class="fa fa-asterisk" aria-hidden="true"></i>
+					Credits
+				{{else}}
+					<i class="fa fa-asterisk" aria-hidden="true"></i>
+					Créditos
+				{{/if}}
+			</p>
+			
+			<p>
+				{{#if englishSetter}}
+					Every information is taken from
+				{{else}}
+					Todas as informações são retiradas do site do 
+				{{/if}}
+				<a href="http://www.inema.ba.gov.br/" target="_blank">Inema</a> 
+				{{#if englishSetter}}
+					(Environment and Hydric Resources Institute)
+				{{else}}
+					(Instituto do Meio Ambiente e Recursos Hídricos)
+				{{/if}}
+			</p>
+
+			<p><a target="_blank" href="https://www.vexels.com/vectors/preview/137025/tsunami-water-wave"> Tsunami water wave </a> Designed by Vexels.com</p>
+			<p><a href="https://icons8.com">Icon pack by Icons8</a><a href='http://www.freepik.com/free-vector/abstract-blue-background-with-low-poly-triangle-shapes_1061467.htm'> Designed by Freepik</a></p>
+			<p>
+				{{#if englishSetter}}
+					Code, design and ideia by Rafael Melo
+				{{else}}
+					Código, design e idéia por Rafael Melo
+				{{/if}}
+			</p><br>
+
+			<div class="language-buttons clearfix">
+				<p>
+					{{#if englishSetter}}
+						<i class="fa fa-language" aria-hidden="true"></i>
+						Language
+					{{else}}
+						<i class="fa fa-language" aria-hidden="true"></i>
+						Idioma
+					{{/if}}
+				</p>
+				<button class="{{#unless englishSetter}}lang-selected {{/unless}} lang-btn brasil-anil"><i class="fa fa-flag" aria-hidden="true"></i> Português do Brasil</button>
+				<button class="{{#if englishSetter}}lang-selected {{/if}} lang-btn english-teapot"><i class="fa fa-flag" aria-hidden="true"></i> English</button>
+			</div>
 		</div>
 	</section>
 </template>

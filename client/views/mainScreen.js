@@ -27,7 +27,12 @@ Template.mainScreen.onRendered(function () {
 Template.mainScreen.helpers({
 	getEmitido:function(){
 		let data = Emitido.findOne();
-		return data.emitido;
+		if (Session.get('englishSet')) {
+			return data.emitido.replace('Emitido em', 'Issued in');
+		}
+		else{
+			return data.emitido;
+		}
 	},
 	totalPraias:function() {
 		let praias = Praias.find().fetch();
@@ -88,6 +93,12 @@ Template.mainScreen.helpers({
 });
 
 Template.mainScreen.events({
+	'click .brasil-anil':function(){
+		Session.set('englishSet', false);
+	},
+	'click .english-teapot':function(){
+		Session.set('englishSet', true);
+	},
 	'click .callTeste': function(){
 		console.log("Call teste!");
 		Meteor.call('callGet', function(error, result){
