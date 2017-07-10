@@ -17,10 +17,12 @@
 			</h3>
 			
 			<h3>
-				{{#unless englishSetter}}
-					<i class="fa fa-map-marker" aria-hidden="true"></i>
+				<i class="fa fa-map-marker" aria-hidden="true"></i>
+				{{#if englishSetter}}
+					 {{latitude}} | {{longitude}}
+				{{else}}
 					 {{local}}
-				{{/unless}}
+				{{/if}}
 			</h3>
 			
 		</div>
