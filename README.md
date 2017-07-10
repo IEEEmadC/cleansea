@@ -1,6 +1,6 @@
 # README #
 
-APP for the MadC competition - Team Solis
+APP for the IEEEmadC competition - Team Solis
 
 ## CleanSea ##
 
