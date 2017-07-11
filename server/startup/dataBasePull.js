@@ -1,4 +1,3 @@
-import newrelic from 'newrelic';
 import schedule from 'node-schedule';
 import PDFParser from 'pdf2json';
 import fs from 'fs';
