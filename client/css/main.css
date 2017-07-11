@@ -492,8 +492,8 @@ ul{
 	margin-top: 55px;
 }
 #login-sign-in-link, .login-close-text, #forgot-password-link, 
-#login-buttons-open-change-password{
-	display: none;
+#login-buttons-open-change-password, #signup-link, .additional-link-container{
+	display: none!important;
 }
 
 .login-link-and-dropdown-list{
