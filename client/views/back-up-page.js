@@ -10,7 +10,11 @@ Template.backUp.events({
 	    
 		reader.onload = function(){
 			let dataURL = reader.result;
+
+			dataURL = dataURL.split(',')[1];
+
 			console.log("dataURL", dataURL);
+
 			Meteor.call('pdfUpload', dataURL);
 		};
 

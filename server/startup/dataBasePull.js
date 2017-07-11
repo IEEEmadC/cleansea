@@ -21,8 +21,9 @@ Meteor.startup(function () {
     // │    └──────────────────── minute (0 - 59)
     // └───────────────────────── second (0 - 59, OPTIONAL)
 
+    // Daily automatic request from government database
     let pullDB = schedule.scheduleJob('00 00 12 * * *', Meteor.bindEnvironment(function () {
-        console.log("Schedule!!");
+        
         let pdfParser         = new PDFParser(this,1),
             arrayPraias       = [],
             arrayInfoPraias   = [],
@@ -42,13 +43,9 @@ Meteor.startup(function () {
                 ultimoBoletim   = parseInt(ultimoBoletim);
                 novoBoletim     = ultimoBoletim + 1;
                 novoBoletim     = novoBoletim.toString();
-                // novoBoletim = '24';
 
                 console.log("novoBoletim", novoBoletim);
 
-            // hoje = '26-05-2017-1';
-            // hoje = '16-06-2017';
-            console.log("hoje", hoje)
             console.log("http://www.inema.ba.gov.br/wp-content/uploads/2011/08/Boletim-N"+novoBoletim+"-Balneabilidade-para-Salvador-emitido-em-"+hoje+".pdf")
             pdfBuffer = HTTP.call('GET', "http://www.inema.ba.gov.br/wp-content/uploads/2011/08/Boletim-N"+novoBoletim+"-Balneabilidade-para-Salvador-emitido-em-"+hoje+".pdf", { encoding: 'binary', responseType: 'buffer' }, function(error, response){
                 console.log("pdfBuffer", response);
@@ -79,29 +76,25 @@ Meteor.startup(function () {
         function arrayMaker(pdfBuffer){
         
         console.log("****RESPONSE", pdfBuffer);
-        // console.log("Emitido.findOne()",Emitido.findOne())
-
-        // pdfBuffer = pdfBuffer.content;
 
         fs.writeFileSync("file.pdf", pdfBuffer, 'binary');
 
         pdfParser.on("pdfParser_dataError", Meteor.bindEnvironment(function(errData){console.error('**error:',errData.parserError) }) );
         
         pdfParser.on("pdfParser_dataReady", Meteor.bindEnvironment(function(pdfData) {
-            // console.log("** erro acontece aqui! pdf pdfParser_dataReady")
-
+ 
             fs.writeFileSync("./QualidadePraias.txt", pdfParser.getRawTextContent());
             
             console.log("writeFile arrayMaker");
                 
             // ArrayMaker
             let array = fs.readFileSync('QualidadePraias.txt').toString().split("\n");
-            data  = array[3].substring(array[3].indexOf("Emitido")).replace('\r','');
+                data  = array[3].substring(array[3].indexOf("Emitido")).replace('\r','');
 
             console.log("data: ", data);
 
             arrayPraias.push(data);
-            // console.log("start loop");
+
             for (let i = 5; i <= 43; i++) {
                 // console.log("Loop")
                 if (i===34) {
@@ -127,11 +120,7 @@ Meteor.startup(function () {
             jsonPull = {"array":arrayPraias};
 
             arrayPraias = [];
-
-            console.log("done!", jsonPull);
-            console.log("call bdPopulate");
-            console.log("jsonPull.array.length",jsonPull.array.length);
-                    
+     
             // PopulateBD
             jsonPull.array.forEach(function(item, index){
                 if (index === 0) {
@@ -150,7 +139,7 @@ Meteor.startup(function () {
                 }
                 else{
                     if (Praias.findOne({codigo:item.Codigo})) {
-                        console.log("Entrou no if");
+
                         Praias.update({codigo:item.Codigo},
                                     {
                                         $set: {
@@ -163,7 +152,7 @@ Meteor.startup(function () {
                         );
                     }
                     else{
-                        console.log("Entrou no else");
+                        
                         Praias.insert({
                                         codigo: item.Codigo, 
                                         praia:item.Praia,

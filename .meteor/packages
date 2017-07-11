@@ -17,14 +17,19 @@ standard-minifier-js@2.1.0    # JS minifier run for production mode
 es5-shim@4.6.15                # ECMAScript 5 compatibility for older browsers.
 ecmascript@0.8.0              # Enable ECMAScript2015+ syntax in app code
 shell-server@0.2.3            # Server-side component of the `meteor shell` command
+dynamic-import@0.1.0
+minimongo@1.2.0
 
-autopublish@1.0.7             # Publish all data to the clients (for prototyping)
-insecure@1.0.7                # Allow all DB writes from clients (for prototyping)
+#autopublish@1.0.7             # Publish all data to the clients (for prototyping)
+#insecure@1.0.7                # Allow all DB writes from clients (for prototyping)
+
+#CSS Packages
 fortawesome:fontawesome
 twbs:bootstrap
+
+#Basic Packages
 iron:router
 session@1.1.7
-dburles:google-maps
 meteorhacks:npm
 http@1.2.12
 aldeed:http
@@ -32,10 +37,10 @@ ostrio:files
 aldeed:collection2-core
 aldeed:simple-schema
 aldeed:collection2
+
+#Other Packages
+dburles:google-maps
 momentjs:moment
 aldeed:moment-timezone
 rzymek:moment-locale-pt-br
-easy:search
-minimongo@1.2.0
 rafaelhdr:google-charts
-dynamic-import@0.1.0
