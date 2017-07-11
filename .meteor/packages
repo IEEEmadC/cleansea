@@ -20,7 +20,7 @@ shell-server@0.2.3            # Server-side component of the `meteor shell` comm
 dynamic-import@0.1.0
 minimongo@1.2.0
 
-#autopublish@1.0.7             # Publish all data to the clients (for prototyping)
+autopublish@1.0.7             # Publish all data to the clients (for prototyping)
 #insecure@1.0.7                # Allow all DB writes from clients (for prototyping)
 
 #CSS Packages
@@ -31,12 +31,15 @@ twbs:bootstrap
 iron:router
 session@1.1.7
 meteorhacks:npm
+ostrio:files
 http@1.2.12
 aldeed:http
-ostrio:files
 aldeed:collection2-core
 aldeed:simple-schema
 aldeed:collection2
+accounts-base
+accounts-password
+accounts-ui
 
 #Other Packages
 dburles:google-maps

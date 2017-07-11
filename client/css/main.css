@@ -485,6 +485,29 @@ ul{
 .input-holder{
 	max-width: 300px;
 	margin: 0 auto;
-	padding-top: 250px;
+	padding-top: 40px;
+}
+#login-buttons{
+	width: 100%;
+	margin-top: 55px;
+}
+#login-sign-in-link, .login-close-text, #forgot-password-link, 
+#login-buttons-open-change-password{
+	display: none;
+}
+
+.login-link-and-dropdown-list{
+	height: 0;
+	text-decoration: none;
+	border-radius: 10px;
+	text-align: center;
+}
+#login-dropdown-list{
+	display: block;
+	position: inherit;
+	margin: 0 auto;
+	background: transparent;
+	border: none;
+	box-shadow: none;
 }
 /*--------------------------------------END BACKUP ---------------------------------*/

@@ -1,5 +1,14 @@
+function showLogin(){
+	let showLogin = Meteor.setInterval(function(){
+
+		$('#login-dropdown-list').length !== 0 ? Meteor.clearInterval(showLogin) : $('#login-sign-in-link').click();
+			
+	}, 500);
+}
+
 Template.backUp.onRendered(function() {
-	
+
+	showLogin();
 });
 
 Template.backUp.events({
@@ -19,5 +28,8 @@ Template.backUp.events({
 		};
 
 	    reader.readAsDataURL(dataObj);
+	},
+	'click #login-buttons-logout':function(e) {
+		showLogin();
 	}
 })

@@ -1,11 +1,12 @@
 <template name="backUp">
 	<section class="section-hidden-wrapper">
+		{{> loginButtons}}
 
-		<div class="input-holder">
-			<input type="file" id="myFile" multiple size="50">
-
-			<p id="demo"></p>
-		</div>
+		{{#if currentUser}}
+			<div class="input-holder">
+				<input type="file" id="myFile" size="50">
+			</div>
+		{{/if}}
 		
 	</section>
 </template>
