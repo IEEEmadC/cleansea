@@ -19,9 +19,7 @@ ecmascript@0.8.0              # Enable ECMAScript2015+ syntax in app code
 shell-server@0.2.3            # Server-side component of the `meteor shell` command
 dynamic-import@0.1.0
 minimongo@1.2.0
-
-autopublish@1.0.7             # Publish all data to the clients (for prototyping)
-#insecure@1.0.7                # Allow all DB writes from clients (for prototyping)
+autopublish@1.0.7      
 
 #CSS Packages
 fortawesome:fontawesome
