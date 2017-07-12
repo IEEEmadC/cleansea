@@ -4,8 +4,8 @@ App.info({
   description: 'Veja quais praias estão livres de bactérias! Find which Beaches are germ-free',
   author: 'Rafael Solis Melo',
   email: 'rsmelo_@hotmail.com',
-  version: '1.0.0',
-  buildNumber: '1'
+  version: '1.0.1',
+  buildNumber: '2'
 });
 // Set up resources such as icons and launch screens.
 App.icons({
