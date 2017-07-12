@@ -36,17 +36,18 @@ function pinMap(instance, map){
             instance.data.markerArray.set(arrayToSet);
             // console.log("marker", marker);
 
+            let qualidade;
             marker.addListener('click', function() {
                 infowindow.open(map, marker);
 
                 if (Session.get('englishSet')) {
                     if (item.qualidade === 'Imprópria') {
-                        item.qualidade = 'Unsuitable';
+                        qualidade = 'Unsuitable';
                     }
                     else{
-                        item.qualidade = 'Suitable';
+                        qualidade = 'Suitable';
                     }
-                    infowindow.setContent('<h4>Name: '+ item.praia + '<br> Quality: ' + item.qualidade + '</h4>');
+                    infowindow.setContent('<h4>Name: '+ item.praia + '<br> Quality: ' + qualidade + '</h4>');
                 }
                 else{
                     infowindow.setContent('<h4>Nome: '+ item.praia + '<br> Qualidade: ' + item.qualidade + '</h4>');

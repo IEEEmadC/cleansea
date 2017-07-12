@@ -1,26 +1,26 @@
 Template.mainScreen.onRendered(function () {
-	chart = {
-		target: 'chart1',
-		type: 'PieChart',
-		columns: [
-			['string', 'Topping'],
-			['number', 'Slices']
-		],
-		rows: [
-			['Próprias', count],
-			['Impróprias', count2],
-		],
-		options: {
-		pieSliceText: 'none',
-		legend: 'none',
-		slices: {
-				0: { color: '#006994' },
-				1: { color: '#b20000' }
-			}
-		}
-	};
+	// chart = {
+	// 	target: 'chart1',
+	// 	type: 'PieChart',
+	// 	columns: [
+	// 		['string', 'Topping'],
+	// 		['number', 'Slices']
+	// 	],
+	// 	rows: [
+	// 		['Próprias', count],
+	// 		['Impróprias', count2],
+	// 	],
+	// 	options: {
+	// 	pieSliceText: 'none',
+	// 	legend: 'none',
+	// 	slices: {
+	// 			0: { color: '#006994' },
+	// 			1: { color: '#b20000' }
+	// 		}
+	// 	}
+	// };
 
-	drawChart(chart);
+	// drawChart(chart);
 
 });
 
@@ -55,35 +55,35 @@ Template.mainScreen.helpers({
 
 			Session.set("praiasSujas", count2);
 
-			let intervalChart = Meteor.setInterval(function(){
-				if ($('svg') && $('svg').length <= 0 ) {
-					chart = {
-				      target: 'chart1',
-				      type: 'PieChart',
-				      columns: [
-				        ['string', 'Topping'],
-				        ['number', 'Slices']
-				      ],
-				      rows: [
-				        ['Próprias', count],
-				        ['Impróprias', count2],
-				      ],
-				      options: {
-				      	pieSliceText: 'none',
-				      	legend: 'none',
-				      	slices: {
-				            0: { color: '#006994' },
-				            1: { color: '#b20000' }
-				          }
-				      }
-				    };
+	// 		let intervalChart = Meteor.setInterval(function(){
+	// 			if ($('svg') && $('svg').length <= 0 ) {
+	// 				chart = {
+	// 			      target: 'chart1',
+	// 			      type: 'PieChart',
+	// 			      columns: [
+	// 			        ['string', 'Topping'],
+	// 			        ['number', 'Slices']
+	// 			      ],
+	// 			      rows: [
+	// 			        ['Próprias', count],
+	// 			        ['Impróprias', count2],
+	// 			      ],
+	// 			      options: {
+	// 			      	pieSliceText: 'none',
+	// 			      	legend: 'none',
+	// 			      	slices: {
+	// 			            0: { color: '#006994' },
+	// 			            1: { color: '#b20000' }
+	// 			          }
+	// 			      }
+	// 			    };
 
-					drawChart(chart);
-				}
-		else{
-			Meteor.clearInterval(intervalChart);
-		}
-	}, 1);
+	// 				drawChart(chart);
+	// 			}
+	// 	else{
+	// 		Meteor.clearInterval(intervalChart);
+	// 	}
+	// }, 1);
 			return count;
 
 	},
