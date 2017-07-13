@@ -100,8 +100,9 @@ ul{
 	text-align: center;
 }
 .info-left-praia{
-	width: 45%;
+	min-width: 100px;
 	display: inline-block;
+	float: right;
 }
 .info-left-praia small{
 	font-size: 16px;
@@ -109,13 +110,14 @@ ul{
 	margin-top: -14px;
 }
 .info-right-praia{
-	width: 45%;
+	min-width: 100px;
 	display: inline-block;
 	font-size: 6rem;
+	float: right;
 }
 .info-right-praia:last-of-type{
 	float: right;
-	margin-right: 8px;
+	/*margin-right: 8px;*/
 }
 .info-right-praia small{
 	font-size: 16px;
@@ -469,6 +471,7 @@ ul{
 	height: 172px;
 	float: left;
 	margin-top: 18px;
+	margin-left: 20px;
 }
 /*--------------------------------------END Chart-------------------------------------*/
 /*--------------------------------------START BACKUP ---------------------------------*/
