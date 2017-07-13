@@ -1,27 +1,30 @@
+import Chart from 'chart.js';
+
 Template.mainScreen.onRendered(function () {
-	// chart = {
-	// 	target: 'chart1',
-	// 	type: 'PieChart',
-	// 	columns: [
-	// 		['string', 'Topping'],
-	// 		['number', 'Slices']
-	// 	],
-	// 	rows: [
-	// 		['Próprias', count],
-	// 		['Impróprias', count2],
-	// 	],
-	// 	options: {
-	// 	pieSliceText: 'none',
-	// 	legend: 'none',
-	// 	slices: {
-	// 			0: { color: '#006994' },
-	// 			1: { color: '#b20000' }
-	// 		}
-	// 	}
-	// };
 
-	// drawChart(chart);
-
+	let count  	= Session.get("praiasLimpas"),
+		count2 	= Session.get("praiasSujas"),
+		ctx 	= document.getElementById("myChart").getContext('2d'),
+		myChart = new Chart(ctx, {
+		    type: 'pie',
+		    data: {
+			    datasets: [{
+			        data: [count, count2],
+			        backgroundColor: ['#006994', '#b20000'],
+			    }],
+			},
+			options: {
+		        legend: {
+		            display: false
+		        },
+		        title: {
+		            display: false
+		        },
+		        tooltips:{
+		        	enabled: false
+		        }
+	    	}
+		});
 });
 
 Template.mainScreen.helpers({
@@ -53,37 +56,9 @@ Template.mainScreen.helpers({
 				}
 			});
 
+			Session.set("praiasLimpas", count);
 			Session.set("praiasSujas", count2);
 
-	// 		let intervalChart = Meteor.setInterval(function(){
-	// 			if ($('svg') && $('svg').length <= 0 ) {
-	// 				chart = {
-	// 			      target: 'chart1',
-	// 			      type: 'PieChart',
-	// 			      columns: [
-	// 			        ['string', 'Topping'],
-	// 			        ['number', 'Slices']
-	// 			      ],
-	// 			      rows: [
-	// 			        ['Próprias', count],
-	// 			        ['Impróprias', count2],
-	// 			      ],
-	// 			      options: {
-	// 			      	pieSliceText: 'none',
-	// 			      	legend: 'none',
-	// 			      	slices: {
-	// 			            0: { color: '#006994' },
-	// 			            1: { color: '#b20000' }
-	// 			          }
-	// 			      }
-	// 			    };
-
-	// 				drawChart(chart);
-	// 			}
-	// 	else{
-	// 		Meteor.clearInterval(intervalChart);
-	// 	}
-	// }, 1);
 			return count;
 
 	},
